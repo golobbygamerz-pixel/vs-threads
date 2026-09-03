@@ -15,11 +15,14 @@ body {
 }
 
 
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar {
   height: 72px;
   padding: 0 5%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -40,15 +43,16 @@ body {
 
   font-size: 22px;
   font-weight: 900;
+
   letter-spacing: -1.5px;
 }
 
 .logo span {
   margin-left: 4px;
+
   font-size: 9px;
   letter-spacing: 1.5px;
 }
-
 
 .nav-links {
   display: flex;
@@ -69,7 +73,6 @@ body {
   opacity: 0.5;
 }
 
-
 .nav-actions {
   display: flex;
   gap: 15px;
@@ -80,11 +83,14 @@ body {
   background: none;
 
   font-size: 20px;
+
   cursor: pointer;
 }
 
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero {
   width: 90%;
@@ -104,7 +110,6 @@ body {
   background: #ffd84d;
 }
 
-
 .hero-content {
   padding: 70px;
 
@@ -112,7 +117,6 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-
 
 .eyebrow {
   font-size: 11px;
@@ -122,7 +126,6 @@ body {
 
   margin-bottom: 20px;
 }
-
 
 .hero h1 {
   font-size: clamp(50px, 6vw, 90px);
@@ -134,11 +137,9 @@ body {
   font-weight: 900;
 }
 
-
 .hero h1 span {
   color: #ff4d2e;
 }
-
 
 .hero-text {
   max-width: 400px;
@@ -149,7 +150,6 @@ body {
 
   color: rgba(0, 0, 0, 0.65);
 }
-
 
 .primary-btn {
   width: fit-content;
@@ -171,13 +171,14 @@ body {
   transition: 0.3s;
 }
 
-
 .primary-btn:hover {
   transform: translateY(-3px);
 }
 
 
-/* HERO VISUAL */
+/* =========================
+   HERO VISUAL
+========================= */
 
 .hero-visual {
   background: #ff4d2e;
@@ -192,7 +193,6 @@ body {
   overflow: hidden;
 }
 
-
 .hero-brand {
   font-size: 190px;
 
@@ -205,11 +205,9 @@ body {
   transition: 0.6s;
 }
 
-
 .hero-visual:hover .hero-brand {
   transform: scale(1.08) rotate(-3deg);
 }
-
 
 .floating-text {
   position: absolute;
@@ -227,16 +225,18 @@ body {
 }
 
 
-/* FEATURES */
+/* =========================
+   FEATURES
+========================= */
 
 .features {
   display: grid;
+
   grid-template-columns: repeat(4, 1fr);
 
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
-
 
 .features div {
   text-align: center;
@@ -252,7 +252,9 @@ body {
 }
 
 
-/* PRODUCTS */
+/* =========================
+   PRODUCTS
+========================= */
 
 .products-section {
   width: 90%;
@@ -263,15 +265,14 @@ body {
   padding: 120px 0;
 }
 
-
 .section-heading {
   display: flex;
+
   justify-content: space-between;
   align-items: end;
 
   margin-bottom: 40px;
 }
-
 
 .section-heading h2 {
   font-size: 55px;
@@ -280,7 +281,6 @@ body {
 
   line-height: 1;
 }
-
 
 .section-heading a {
   color: #111;
@@ -291,7 +291,6 @@ body {
   font-weight: 800;
 }
 
-
 .product-grid {
   display: grid;
 
@@ -300,62 +299,49 @@ body {
   gap: 18px;
 }
 
-
 .product-card {
   cursor: pointer;
 
   transition: 0.3s;
 }
 
-
 .product-card:hover {
   transform: translateY(-7px);
 }
 
+
+/* PRODUCT IMAGE */
 
 .product-image {
   aspect-ratio: 3 / 4;
 
   border-radius: 20px;
 
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
   position: relative;
 
   overflow: hidden;
+
+  background: #eee;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.7s cubic-bezier(.2, .8, .2, 1);
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.06);
 }
 
 
-.product-image span {
-  font-size: 70px;
-
-  font-weight: 900;
-
-  letter-spacing: -7px;
-
-  opacity: 0.18;
-}
-
-
-.orange {
-  background: #ff704d;
-}
-
-.blue {
-  background: #cfe3ff;
-}
-
-.pink {
-  background: #ffd1e2;
-}
-
-.yellow {
-  background: #ffe66b;
-}
-
+/* WISHLIST */
 
 .wishlist {
   position: absolute;
@@ -363,8 +349,8 @@ body {
   top: 15px;
   right: 15px;
 
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
 
   border: none;
 
@@ -375,20 +361,57 @@ body {
   font-size: 19px;
 
   cursor: pointer;
+
+  z-index: 5;
+
+  transition: 0.25s;
 }
 
+.wishlist:hover {
+  transform: scale(1.1);
+}
+
+
+/* PRODUCT TAG */
+
+.product-tag {
+  position: absolute;
+
+  left: 14px;
+  top: 14px;
+
+  padding: 7px 10px;
+
+  border-radius: 50px;
+
+  background: white;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+
+  z-index: 5;
+}
+
+
+/* PRODUCT INFO */
 
 .product-info {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
   padding: 15px 3px;
 }
-
 
 .product-info h3 {
   font-size: 14px;
 
   font-weight: 700;
 }
-
 
 .product-info p {
   margin-top: 7px;
@@ -399,7 +422,37 @@ body {
 }
 
 
-/* STATEMENT */
+/* QUICK ADD */
+
+.quick-add {
+  width: 38px;
+  height: 38px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 50%;
+
+  background: white;
+
+  font-size: 22px;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.quick-add:hover {
+  background: #111;
+
+  color: white;
+
+  transform: rotate(90deg);
+}
+
+
+/* =========================
+   STATEMENT
+========================= */
 
 .statement {
   min-height: 600px;
@@ -418,7 +471,6 @@ body {
   padding: 50px;
 }
 
-
 .statement p {
   font-size: 11px;
 
@@ -426,7 +478,6 @@ body {
 
   letter-spacing: 3px;
 }
-
 
 .statement h2 {
   margin-top: 20px;
@@ -440,13 +491,14 @@ body {
   font-weight: 900;
 }
 
-
 .statement h2 span {
   color: #ff4d2e;
 }
 
 
-/* WHATSAPP */
+/* =========================
+   WHATSAPP
+========================= */
 
 .whatsapp {
   position: fixed;
@@ -470,11 +522,19 @@ body {
 
   font-weight: 800;
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  transition: 0.3s;
+}
+
+.whatsapp:hover {
+  transform: translateY(-4px);
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 800px) {
 
@@ -484,6 +544,10 @@ body {
 
   .nav-links {
     display: none;
+  }
+
+  .nav-actions {
+    gap: 10px;
   }
 
   .hero {
@@ -542,8 +606,30 @@ body {
     border-radius: 15px;
   }
 
-  .product-image span {
-    font-size: 50px;
+  .product-tag {
+    left: 9px;
+    top: 9px;
+
+    padding: 6px 8px;
+  }
+
+  .wishlist {
+    width: 34px;
+    height: 34px;
+
+    top: 9px;
+    right: 9px;
+  }
+
+  .product-info h3 {
+    font-size: 12px;
+  }
+
+  .quick-add {
+    width: 32px;
+    height: 32px;
+
+    font-size: 18px;
   }
 
   .statement {
@@ -554,6 +640,11 @@ body {
     font-size: 70px;
 
     letter-spacing: -5px;
+  }
+
+  .whatsapp {
+    right: 15px;
+    bottom: 15px;
   }
 
 }
