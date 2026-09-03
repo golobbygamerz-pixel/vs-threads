@@ -1,199 +1,172 @@
-/* =========================================================
+"use strict";
+
+/* =========================================
    VS THREADS
-   CART + WISHLIST + AUTH + PROFILE
-========================================================= */
-
-
-/* =========================================================
-   PRODUCT DATA
-========================================================= */
+   FRONTEND E-COMMERCE SYSTEM
+========================================= */
 
 const products = [
-
   {
-    id: "vs001",
+    id: 1,
     name: "Essential Oversized Tee",
     category: "tees",
     price: 1299,
-    tag: "BESTSELLER",
     image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85",
-    description: "A clean oversized silhouette made for everyday rotation."
+    description: "A clean oversized silhouette built for everyday wear."
   },
-
   {
-    id: "vs002",
-    name: "Core Heavy Hoodie",
+    id: 2,
+    name: "Core Heavyweight Hoodie",
     category: "hoodies",
     price: 2499,
-    tag: "NEW",
     image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85",
-    description: "Heavyweight comfort with a refined contemporary shape."
+    description: "Heavyweight comfort with a refined contemporary fit."
   },
-
   {
-    id: "vs003",
+    id: 3,
     name: "Studio Relaxed Shirt",
     category: "shirts",
-    price: 2199,
-    tag: "EDITOR'S PICK",
-    image: "https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=900&q=85",
-    description: "Relaxed tailoring designed for effortless styling."
+    price: 1999,
+    image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=900&q=85",
+    description: "Relaxed everyday shirt with a modern editorial shape."
   },
-
   {
-    id: "vs004",
-    name: "Everyday Wide Pants",
+    id: 4,
+    name: "Everyday Wide Trousers",
     category: "bottoms",
-    price: 2299,
-    tag: "NEW",
+    price: 2199,
     image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=900&q=85",
-    description: "Wide-leg everyday trousers with a clean modern finish."
+    description: "Easy wide-leg trousers designed for movement."
   },
-
   {
-    id: "vs005",
-    name: "Signature Box Tee",
+    id: 5,
+    name: "Signature Graphic Tee",
     category: "tees",
-    price: 1399,
-    tag: "SIGNATURE",
+    price: 1499,
     image: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=900&q=85",
-    description: "Structured cotton tee with a premium boxy fit."
+    description: "Statement graphic tee with a premium everyday finish."
   },
-
   {
-    id: "vs006",
-    name: "Minimal Zip Hoodie",
+    id: 6,
+    name: "Essential Zip Hoodie",
     category: "hoodies",
     price: 2699,
-    tag: "LIMITED",
     image: "https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=900&q=85",
-    description: "Minimal zip hoodie built around comfort and clean lines."
+    description: "Minimal zip hoodie made for layering."
   },
-
   {
-    id: "vs007",
-    name: "Premium Overshirt",
+    id: 7,
+    name: "Premium Oxford Shirt",
     category: "shirts",
-    price: 2399,
-    tag: "NEW",
+    price: 2299,
     image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=900&q=85",
-    description: "Layer-ready overshirt with an elevated everyday feel."
+    description: "Clean Oxford styling with a relaxed modern fit."
   },
-
   {
-    id: "vs008",
-    name: "Relaxed Utility Pants",
+    id: 8,
+    name: "Utility Cargo Pant",
     category: "bottoms",
-    price: 2499,
-    tag: "CORE",
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85",
-    description: "Relaxed utility-inspired trousers with functional detailing."
+    price: 2399,
+    image: "https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&w=900&q=85",
+    description: "Utility-inspired trousers with a contemporary silhouette."
   }
-
 ];
 
+/* =========================================
+   STORAGE
+========================================= */
 
-/* =========================================================
-   LOCAL STORAGE
-========================================================= */
-
-const STORAGE_KEYS = {
+const STORAGE = {
   cart: "vs_threads_cart",
   wishlist: "vs_threads_wishlist",
   user: "vs_threads_user",
   orders: "vs_threads_orders"
 };
 
-
-function loadStorage(key, fallback) {
-
+function load(key, fallback = []) {
   try {
-
-    const saved = localStorage.getItem(key);
-
-    return saved ? JSON.parse(saved) : fallback;
-
-  } catch (error) {
-
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : fallback;
+  } catch {
     return fallback;
-
   }
-
 }
 
-
-function saveStorage(key, value) {
-
+function save(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
-
 }
 
+let cart = load(STORAGE.cart);
+let wishlist = load(STORAGE.wishlist);
+let user = load(STORAGE.user, null);
+let orders = load(STORAGE.orders);
 
-/* =========================================================
-   STATE
-========================================================= */
+/* =========================================
+   ELEMENTS
+========================================= */
 
-let cart = loadStorage(STORAGE_KEYS.cart, []);
-let wishlist = loadStorage(STORAGE_KEYS.wishlist, []);
-let currentUser = loadStorage(STORAGE_KEYS.user, null);
-let orders = loadStorage(STORAGE_KEYS.orders, []);
+const $ = id => document.getElementById(id);
+
+const pageLoader = $("pageLoader");
+const header = $("header");
+const overlay = $("overlay");
+
+const cartDrawer = $("cartDrawer");
+const wishlistDrawer = $("wishlistDrawer");
+
+const productGrid = $("productGrid");
+const emptyState = $("emptyState");
+
+const cartItems = $("cartItems");
+const cartEmpty = $("cartEmpty");
+const cartFooter = $("cartFooter");
+const cartSubtotal = $("cartSubtotal");
+const cartCount = $("cartCount");
+
+const wishlistItems = $("wishlistItems");
+const wishlistEmpty = $("wishlistEmpty");
+const wishlistCount = $("wishlistCount");
+
+const authModal = $("authModal");
+const quickViewModal = $("quickViewModal");
+const checkoutModal = $("checkoutModal");
+const trackModal = $("trackModal");
+const profilePage = $("profilePage");
+
+/* =========================================
+   INIT
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    pageLoader.classList.add("hide");
+  }, 500);
+
+  renderProducts();
+  renderCart();
+  renderWishlist();
+  updateCounters();
+  updateProfile();
+
+  setupEvents();
+});
+
+/* =========================================
+   HEADER
+========================================= */
+
+window.addEventListener("scroll", () => {
+  header.classList.toggle("scrolled", window.scrollY > 30);
+});
+
+/* =========================================
+   PRODUCTS
+========================================= */
 
 let activeCategory = "all";
-let authMode = "login";
-let quickViewProductId = null;
-
-
-/* =========================================================
-   DOM
-========================================================= */
-
-const productGrid = document.getElementById("productGrid");
-const emptyState = document.getElementById("emptyState");
-
-const cartDrawer = document.getElementById("cartDrawer");
-const wishlistDrawer = document.getElementById("wishlistDrawer");
-const overlay = document.getElementById("overlay");
-
-const cartItems = document.getElementById("cartItems");
-const cartEmpty = document.getElementById("cartEmpty");
-const cartFooter = document.getElementById("cartFooter");
-const cartSubtotal = document.getElementById("cartSubtotal");
-const cartCount = document.getElementById("cartCount");
-
-const wishlistItems = document.getElementById("wishlistItems");
-const wishlistEmpty = document.getElementById("wishlistEmpty");
-const wishlistCount = document.getElementById("wishlistCount");
-
-const toast = document.getElementById("toast");
-const toastText = document.getElementById("toastText");
-
-
-/* =========================================================
-   FORMAT PRICE
-========================================================= */
-
-function formatPrice(price) {
-
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0
-  }).format(price);
-
-}
-
-
-/* =========================================================
-   PRODUCT RENDER
-========================================================= */
+let searchTerm = "";
 
 function renderProducts() {
-
-  const searchInput = document.getElementById("productSearch");
-
-  const searchTerm = searchInput
-    ? searchInput.value.toLowerCase().trim()
-    : "";
 
   const filtered = products.filter(product => {
 
@@ -202,314 +175,49 @@ function renderProducts() {
       product.category === activeCategory;
 
     const searchMatch =
-      product.name.toLowerCase().includes(searchTerm) ||
-      product.category.toLowerCase().includes(searchTerm);
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchTerm.toLowerCase());
 
     return categoryMatch && searchMatch;
-
   });
-
 
   productGrid.innerHTML = "";
 
-
-  if (!filtered.length) {
-
-    emptyState.classList.add("show");
-
-    return;
-
-  }
-
-
-  emptyState.classList.remove("show");
-
+  emptyState.classList.toggle("hidden", filtered.length !== 0);
 
   filtered.forEach(product => {
 
-    const isWishlisted = wishlist.includes(product.id);
+    const liked = wishlist.includes(product.id);
 
     const card = document.createElement("article");
 
     card.className = "product-card";
 
-    card.dataset.productId = product.id;
-
-
     card.innerHTML = `
-
-      <div class="product-image-wrap" data-action="quick-view">
-
-        <span class="product-tag">
-          ${product.tag}
-        </span>
-
-        <button
-          class="product-wishlist ${isWishlisted ? "active" : ""}"
-          data-action="wishlist"
-          aria-label="Add to wishlist"
-        >
-          ${isWishlisted ? "♥" : "♡"}
-        </button>
+      <div class="product-image">
 
         <img
           src="${product.image}"
-          alt="${product.name}"
+          alt="${escapeHTML(product.name)}"
           loading="lazy"
-          decoding="async"
         >
 
-      </div>
-
-
-      <div class="product-info">
-
-        <div class="product-info-top">
-
-          <h3 class="product-name">
-            ${product.name}
-          </h3>
-
-          <span class="product-price">
-            ${formatPrice(product.price)}
-          </span>
-
-        </div>
-
-        <p class="product-category">
-          ${product.category}
-        </p>
-
-        <button
-          class="product-add"
-          data-action="add-cart"
-        >
-          ADD TO CART
-        </button>
-
-      </div>
-
-    `;
-
-
-    productGrid.appendChild(card);
-
-  });
-
-}
-
-
-/* =========================================================
-   CART
-========================================================= */
-
-function addToCart(productId, size = "M") {
-
-  const product = products.find(item => item.id === productId);
-
-  if (!product) return;
-
-
-  const existing = cart.find(
-    item => item.id === productId && item.size === size
-  );
-
-
-  if (existing) {
-
-    existing.quantity += 1;
-
-  } else {
-
-    cart.push({
-      id: productId,
-      size,
-      quantity: 1
-    });
-
-  }
-
-
-  saveStorage(STORAGE_KEYS.cart, cart);
-
-  updateCartUI();
-
-  showToast(`${product.name} added to cart`);
-
-  openDrawer(cartDrawer);
-
-}
-
-
-function decreaseCart(productId, size) {
-
-  const item = cart.find(
-    cartItem => cartItem.id === productId && cartItem.size === size
-  );
-
-  if (!item) return;
-
-
-  item.quantity -= 1;
-
-
-  if (item.quantity <= 0) {
-
-    cart = cart.filter(
-      cartItem =>
-        !(cartItem.id === productId && cartItem.size === size)
-    );
-
-  }
-
-
-  saveStorage(STORAGE_KEYS.cart, cart);
-
-  updateCartUI();
-
-}
-
-
-function increaseCart(productId, size) {
-
-  const item = cart.find(
-    cartItem => cartItem.id === productId && cartItem.size === size
-  );
-
-  if (!item) return;
-
-  item.quantity += 1;
-
-  saveStorage(STORAGE_KEYS.cart, cart);
-
-  updateCartUI();
-
-}
-
-
-function removeFromCart(productId, size) {
-
-  cart = cart.filter(
-    item =>
-      !(item.id === productId && item.size === size)
-  );
-
-  saveStorage(STORAGE_KEYS.cart, cart);
-
-  updateCartUI();
-
-  showToast("Item removed");
-
-}
-
-
-function getCartQuantity() {
-
-  return cart.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
-
-}
-
-
-function getCartSubtotal() {
-
-  return cart.reduce((total, item) => {
-
-    const product = products.find(
-      product => product.id === item.id
-    );
-
-    return total + (product ? product.price * item.quantity : 0);
-
-  }, 0);
-
-}
-
-
-function updateCartUI() {
-
-  const quantity = getCartQuantity();
-
-  const subtotal = getCartSubtotal();
-
-
-  cartCount.textContent = quantity;
-
-  cartSubtotal.textContent = formatPrice(subtotal);
-
-
-  cartItems.innerHTML = "";
-
-
-  if (!cart.length) {
-
-    cartEmpty.classList.add("show");
-
-    cartFooter.style.display = "none";
-
-    return;
-
-  }
-
-
-  cartEmpty.classList.remove("show");
-
-  cartFooter.style.display = "block";
-
-
-  cart.forEach(item => {
-
-    const product = products.find(
-      product => product.id === item.id
-    );
-
-    if (!product) return;
-
-
-    const element = document.createElement("div");
-
-    element.className = "cart-item";
-
-
-    element.innerHTML = `
-
-      <div class="cart-item-image">
-
-        <img
-          src="${product.image}"
-          alt="${product.name}"
-        >
-
-      </div>
-
-
-      <div class="cart-item-info">
-
-        <h4>${product.name}</h4>
-
-        <small>Size: ${item.size}</small>
-
-        <p>${formatPrice(product.price)}</p>
-
-
-        <div class="quantity-control">
+        <div class="product-actions">
 
           <button
-            data-cart-action="decrease"
+            class="product-action ${liked ? "wish-active" : ""}"
+            data-action="wishlist"
             data-id="${product.id}"
-            data-size="${item.size}"
+            aria-label="Wishlist"
           >
-            −
+            ${liked ? "♥" : "♡"}
           </button>
 
-          <span>${item.quantity}</span>
-
           <button
-            data-cart-action="increase"
+            class="product-action"
+            data-action="quickview"
             data-id="${product.id}"
-            data-size="${item.size}"
+            aria-label="Quick view"
           >
             +
           </button>
@@ -518,1591 +226,1071 @@ function updateCartUI() {
 
       </div>
 
+      <div class="product-info">
 
-      <button
-        class="remove-item"
-        data-cart-action="remove"
-        data-id="${product.id}"
-        data-size="${item.size}"
-      >
-        REMOVE
-      </button>
-
-    `;
-
-
-    cartItems.appendChild(element);
-
-  });
-
-}
-
-
-/* =========================================================
-   WISHLIST
-========================================================= */
-
-function toggleWishlist(productId) {
-
-  const product = products.find(
-    item => item.id === productId
-  );
-
-  if (!product) return;
-
-
-  if (wishlist.includes(productId)) {
-
-    wishlist = wishlist.filter(
-      id => id !== productId
-    );
-
-    showToast("Removed from wishlist");
-
-  } else {
-
-    wishlist.push(productId);
-
-    showToast("Added to wishlist");
-
-  }
-
-
-  saveStorage(STORAGE_KEYS.wishlist, wishlist);
-
-  updateWishlistUI();
-
-  renderProducts();
-
-}
-
-
-function updateWishlistUI() {
-
-  wishlistCount.textContent = wishlist.length;
-
-  wishlistItems.innerHTML = "";
-
-
-  if (!wishlist.length) {
-
-    wishlistEmpty.classList.add("show");
-
-    return;
-
-  }
-
-
-  wishlistEmpty.classList.remove("show");
-
-
-  wishlist.forEach(productId => {
-
-    const product = products.find(
-      item => item.id === productId
-    );
-
-    if (!product) return;
-
-
-    const element = document.createElement("div");
-
-    element.className = "wishlist-item";
-
-
-    element.innerHTML = `
-
-      <div class="wishlist-item-image">
-        <img
-          src="${product.image}"
-          alt="${product.name}"
-        >
-      </div>
-
-      <div>
-
-        <h4>${product.name}</h4>
-
-        <p>${formatPrice(product.price)}</p>
-
-        <button
-          data-wishlist-action="cart"
-          data-id="${product.id}"
-        >
-          ADD TO CART
-        </button>
-
-      </div>
-
-    `;
-
-
-    wishlistItems.appendChild(element);
-
-  });
-
-}
-
-
-/* =========================================================
-   DRAWERS
-========================================================= */
-
-function openDrawer(drawer) {
-
-  closeAllDrawers();
-
-  drawer.classList.add("open");
-
-  overlay.classList.add("active");
-
-  document.body.classList.add("no-scroll");
-
-}
-
-
-function closeDrawer(drawer) {
-
-  drawer.classList.remove("open");
-
-  overlay.classList.remove("active");
-
-  document.body.classList.remove("no-scroll");
-
-}
-
-
-function closeAllDrawers() {
-
-  cartDrawer.classList.remove("open");
-
-  wishlistDrawer.classList.remove("open");
-
-  overlay.classList.remove("active");
-
-  document.body.classList.remove("no-scroll");
-
-}
-
-
-/* =========================================================
-   AUTH
-========================================================= */
-
-const authModal = document.getElementById("authModal");
-const authName = document.getElementById("authName");
-const authEmail = document.getElementById("authEmail");
-const authPassword = document.getElementById("authPassword");
-
-const authTitle = document.getElementById("authTitle");
-const authEyebrow = document.getElementById("authEyebrow");
-const authSubtitle = document.getElementById("authSubtitle");
-const authSubmit = document.getElementById("authSubmit");
-
-const signupOnly = document.querySelector(".signup-only");
-
-const authSwitchText = document.getElementById("authSwitchText");
-const authSwitchBtn = document.getElementById("authSwitchBtn");
-
-
-function openAuth(mode = "login") {
-
-  authMode = mode;
-
-  updateAuthMode();
-
-  authModal.classList.add("active");
-
-  document.body.classList.add("no-scroll");
-
-}
-
-
-function closeAuth() {
-
-  authModal.classList.remove("active");
-
-  if (
-    !cartDrawer.classList.contains("open") &&
-    !wishlistDrawer.classList.contains("open")
-  ) {
-    document.body.classList.remove("no-scroll");
-  }
-
-}
-
-
-function updateAuthMode() {
-
-  if (authMode === "signup") {
-
-    authEyebrow.textContent = "JOIN VS THREADS";
-
-    authTitle.textContent = "Create your account";
-
-    authSubtitle.textContent =
-      "Create your profile and keep everything in one place.";
-
-    authSubmit.textContent = "CREATE ACCOUNT";
-
-    authSwitchText.textContent =
-      "Already have an account?";
-
-    authSwitchBtn.textContent =
-      "Sign in";
-
-    signupOnly.classList.remove("hidden");
-
-  } else {
-
-    authEyebrow.textContent = "WELCOME BACK";
-
-    authTitle.textContent =
-      "Sign in to your account";
-
-    authSubtitle.textContent =
-      "Access your profile, orders and saved items.";
-
-    authSubmit.textContent = "SIGN IN";
-
-    authSwitchText.textContent =
-      "Don't have an account?";
-
-    authSwitchBtn.textContent =
-      "Create one";
-
-    signupOnly.classList.add("hidden");
-
-  }
-
-}
-
-
-function handleAuth() {
-
-  const email = authEmail.value.trim();
-  const password = authPassword.value.trim();
-  const name = authName.value.trim();
-
-
-  if (!email || !password) {
-
-    showToast("Enter your email and password");
-
-    return;
-
-  }
-
-
-  if (!email.includes("@")) {
-
-    showToast("Enter a valid email");
-
-    return;
-
-  }
-
-
-  if (authMode === "signup" && !name) {
-
-    showToast("Enter your full name");
-
-    return;
-
-  }
-
-
-  if (authMode === "signup") {
-
-    currentUser = {
-      name,
-      email
-    };
-
-    saveStorage(
-      STORAGE_KEYS.user,
-      currentUser
-    );
-
-    showToast("Account created");
-
-  } else {
-
-    if (
-      currentUser &&
-      currentUser.email.toLowerCase() === email.toLowerCase()
-    ) {
-
-      currentUser = {
-        ...currentUser,
-        email
-      };
-
-    } else {
-
-      currentUser = {
-        name: email.split("@")[0],
-        email
-      };
-
-    }
-
-
-    saveStorage(
-      STORAGE_KEYS.user,
-      currentUser
-    );
-
-    showToast("Signed in successfully");
-
-  }
-
-
-  authName.value = "";
-  authEmail.value = "";
-  authPassword.value = "";
-
-  closeAuth();
-
-  setTimeout(() => {
-
-    openProfile();
-
-  }, 250);
-
-}
-
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-const profilePage = document.getElementById("profilePage");
-const profileName = document.getElementById("profileName");
-const profileEmail = document.getElementById("profileEmail");
-const profileAvatar = document.getElementById("profileAvatar");
-
-const profileOrderCount = document.getElementById("profileOrderCount");
-const profileWishlistCount = document.getElementById("profileWishlistCount");
-const profileCartCount = document.getElementById("profileCartCount");
-
-const profileOrdersList = document.getElementById("profileOrdersList");
-const noOrders = document.getElementById("noOrders");
-
-
-function getInitials(name) {
-
-  if (!name) return "VS";
-
-
-  const words = name
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean);
-
-
-  if (words.length === 1) {
-
-    return words[0]
-      .slice(0, 2)
-      .toUpperCase();
-
-  }
-
-
-  return (
-    words[0][0] +
-    words[words.length - 1][0]
-  ).toUpperCase();
-
-}
-
-
-function openProfile() {
-
-  if (!currentUser) {
-
-    openAuth("login");
-
-    return;
-
-  }
-
-
-  closeAllDrawers();
-
-  profilePage.classList.add("active");
-
-  document.body.classList.add("no-scroll");
-
-  updateProfileUI();
-
-}
-
-
-function closeProfile() {
-
-  profilePage.classList.remove("active");
-
-  document.body.classList.remove("no-scroll");
-
-}
-
-
-function updateProfileUI() {
-
-  if (!currentUser) return;
-
-
-  profileName.textContent =
-    currentUser.name || "VS THREADS Member";
-
-  profileEmail.textContent =
-    currentUser.email || "";
-
-  profileAvatar.textContent =
-    getInitials(currentUser.name);
-
-
-  profileOrderCount.textContent =
-    orders.length;
-
-  profileWishlistCount.textContent =
-    wishlist.length;
-
-  profileCartCount.textContent =
-    getCartQuantity();
-
-
-  profileOrdersList.innerHTML = "";
-
-
-  if (!orders.length) {
-
-    noOrders.style.display = "block";
-
-    return;
-
-  }
-
-
-  noOrders.style.display = "none";
-
-
-  orders.slice().reverse().forEach(order => {
-
-    const element = document.createElement("div");
-
-    element.className = "profile-order";
-
-
-    element.innerHTML = `
-
-      <div>
-
-        <div class="profile-order-id">
-          ${order.id}
+        <div class="product-category">
+          ${product.category}
         </div>
 
-        <div class="profile-order-date">
-          ${order.date}
+        <h3 class="product-title">
+          ${escapeHTML(product.name)}
+        </h3>
+
+        <div class="product-bottom">
+
+          <span class="product-price">
+            ${formatPrice(product.price)}
+          </span>
+
+          <button
+            class="product-add"
+            data-action="add"
+            data-id="${product.id}"
+          >
+            ADD TO BAG →
+          </button>
+
         </div>
 
       </div>
-
-
-      <div class="profile-order-total">
-
-        <strong>
-          ${formatPrice(order.total)}
-        </strong>
-
-        <br>
-
-        <span class="order-status">
-          ${order.status}
-        </span>
-
-      </div>
-
     `;
 
-
-    profileOrdersList.appendChild(element);
-
+    productGrid.appendChild(card);
   });
-
 }
 
+/* =========================================
+   CART
+========================================= */
 
-function logout() {
+function addToCart(id, size = "M") {
 
-  currentUser = null;
-
-  localStorage.removeItem(STORAGE_KEYS.user);
-
-  closeProfile();
-
-  showToast("Logged out successfully");
-
-}
-
-
-/* =========================================================
-   QUICK VIEW
-========================================================= */
-
-const quickViewModal =
-  document.getElementById("quickViewModal");
-
-const quickImage =
-  document.getElementById("quickImage");
-
-const quickCategory =
-  document.getElementById("quickCategory");
-
-const quickTitle =
-  document.getElementById("quickTitle");
-
-const quickPrice =
-  document.getElementById("quickPrice");
-
-const quickDescription =
-  document.getElementById("quickDescription");
-
-const quickAddBtn =
-  document.getElementById("quickAddBtn");
-
-const sizeOptions =
-  document.getElementById("sizeOptions");
-
-
-function openQuickView(productId) {
-
-  const product = products.find(
-    item => item.id === productId
+  const existing = cart.find(
+    item => item.id === id && item.size === size
   );
 
-  if (!product) return;
-
-
-  quickViewProductId = productId;
-
-  quickImage.src = product.image;
-  quickImage.alt = product.name;
-
-  quickCategory.textContent =
-    product.category.toUpperCase();
-
-  quickTitle.textContent =
-    product.name;
-
-  quickPrice.textContent =
-    formatPrice(product.price);
-
-  quickDescription.textContent =
-    product.description;
-
-
-  sizeOptions
-    .querySelectorAll(".size-btn")
-    .forEach(button => {
-
-      button.classList.remove("active");
-
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({
+      id,
+      size,
+      quantity: 1
     });
+  }
 
+  save(STORAGE.cart, cart);
+  renderCart();
+  updateCounters();
 
-  sizeOptions
-    .querySelector(".size-btn:nth-child(2)")
-    ?.classList.add("active");
+  const product = getProduct(id);
 
-
-  quickViewModal.classList.add("active");
-
-  document.body.classList.add("no-scroll");
-
+  toast(`${product.name} added to bag`);
 }
 
+function changeQuantity(id, size, change) {
 
-function closeQuickView() {
+  const item = cart.find(
+    product => product.id === id && product.size === size
+  );
 
-  quickViewModal.classList.remove("active");
+  if (!item) return;
 
-  document.body.classList.remove("no-scroll");
+  item.quantity += change;
 
+  if (item.quantity <= 0) {
+    cart = cart.filter(
+      product => !(product.id === id && product.size === size)
+    );
+  }
+
+  save(STORAGE.cart, cart);
+
+  renderCart();
+  updateCounters();
 }
 
+function removeFromCart(id, size) {
 
-/* =========================================================
-   CHECKOUT
-========================================================= */
+  cart = cart.filter(
+    item => !(item.id === id && item.size === size)
+  );
 
-const checkoutModal =
-  document.getElementById("checkoutModal");
+  save(STORAGE.cart, cart);
 
-const checkoutSummary =
-  document.getElementById("checkoutSummary");
+  renderCart();
+  updateCounters();
 
+  toast("Item removed");
+}
 
-function openCheckout() {
+function renderCart() {
+
+  cartItems.innerHTML = "";
 
   if (!cart.length) {
 
-    showToast("Your cart is empty");
+    cartEmpty.style.display = "flex";
+    cartFooter.style.display = "none";
 
     return;
-
   }
 
-
-  if (!currentUser) {
-
-    closeDrawer(cartDrawer);
-
-    showToast("Please sign in before checkout");
-
-    setTimeout(() => {
-
-      openAuth("login");
-
-    }, 300);
-
-    return;
-
-  }
-
-
-  renderCheckoutSummary();
-
-  checkoutModal.classList.add("active");
-
-  document.body.classList.add("no-scroll");
-
-}
-
-
-function renderCheckoutSummary() {
-
-  checkoutSummary.innerHTML = "";
-
+  cartEmpty.style.display = "none";
+  cartFooter.style.display = "block";
 
   cart.forEach(item => {
 
-    const product = products.find(
-      product => product.id === item.id
-    );
+    const product = getProduct(item.id);
 
     if (!product) return;
 
+    const row = document.createElement("div");
 
-    const line = document.createElement("div");
+    row.className = "cart-row";
 
-    line.className = "checkout-line";
+    row.innerHTML = `
+      <img src="${product.image}" alt="${escapeHTML(product.name)}">
 
+      <div>
+        <h4>${escapeHTML(product.name)}</h4>
+        <p>${formatPrice(product.price)} · Size ${item.size}</p>
 
-    line.innerHTML = `
+        <div class="cart-controls">
+          <button
+            class="qty-btn"
+            data-cart-action="minus"
+            data-id="${item.id}"
+            data-size="${item.size}"
+          >−</button>
 
-      <span>
-        ${product.name} × ${item.quantity}
-      </span>
+          <span>${item.quantity}</span>
+
+          <button
+            class="qty-btn"
+            data-cart-action="plus"
+            data-id="${item.id}"
+            data-size="${item.size}"
+          >+</button>
+        </div>
+
+        <button
+          class="remove-btn"
+          data-cart-action="remove"
+          data-id="${item.id}"
+          data-size="${item.size}"
+        >
+          REMOVE
+        </button>
+      </div>
 
       <strong>
         ${formatPrice(product.price * item.quantity)}
       </strong>
-
     `;
 
-
-    checkoutSummary.appendChild(line);
-
+    cartItems.appendChild(row);
   });
 
+  const total = cart.reduce((sum, item) => {
 
-  const total = document.createElement("div");
+    const product = getProduct(item.id);
 
-  total.className = "checkout-line";
+    return sum + (
+      product ? product.price * item.quantity : 0
+    );
 
-  total.style.marginTop = "10px";
-  total.style.paddingTop = "12px";
-  total.style.borderTop = "1px solid #e5e8f0";
-  total.style.fontWeight = "800";
+  }, 0);
 
-
-  total.innerHTML = `
-
-    <span>TOTAL</span>
-
-    <strong>
-      ${formatPrice(getCartSubtotal())}
-    </strong>
-
-  `;
-
-
-  checkoutSummary.appendChild(total);
-
+  cartSubtotal.textContent = formatPrice(total);
 }
 
+/* =========================================
+   WISHLIST
+========================================= */
 
-function closeCheckout() {
+function toggleWishlist(id) {
 
-  checkoutModal.classList.remove("active");
+  if (wishlist.includes(id)) {
 
-  document.body.classList.remove("no-scroll");
+    wishlist = wishlist.filter(item => item !== id);
 
-}
+    toast("Removed from wishlist");
 
+  } else {
 
-function createOrder() {
+    wishlist.push(id);
 
-  if (!cart.length) return;
-
-
-  const name =
-    document.getElementById("checkoutName").value.trim();
-
-  const phone =
-    document.getElementById("checkoutPhone").value.trim();
-
-  const address =
-    document.getElementById("checkoutAddress").value.trim();
-
-
-  if (!name || !phone || !address) {
-
-    showToast("Please complete delivery details");
-
-    return;
-
+    toast("Added to wishlist");
   }
 
+  save(STORAGE.wishlist, wishlist);
 
-  const orderNumber =
+  renderProducts();
+  renderWishlist();
+  updateCounters();
+  updateProfile();
+}
+
+function renderWishlist() {
+
+  wishlistItems.innerHTML = "";
+
+  if (!wishlist.length) {
+    wishlistEmpty.style.display = "flex";
+    return;
+  }
+
+  wishlistEmpty.style.display = "none";
+
+  wishlist.forEach(id => {
+
+    const product = getProduct(id);
+
+    if (!product) return;
+
+    const row = document.createElement("div");
+
+    row.className = "cart-row";
+
+    row.innerHTML = `
+      <img src="${product.image}" alt="${escapeHTML(product.name)}">
+
+      <div>
+        <h4>${escapeHTML(product.name)}</h4>
+        <p>${formatPrice(product.price)}</p>
+
+        <button
+          class="product-add"
+          data-wish-action="add"
+          data-id="${product.id}"
+        >
+          ADD TO BAG →
+        </button>
+      </div>
+
+      <button
+        class="remove-btn"
+        data-wish-action="remove"
+        data-id="${product.id}"
+      >
+        REMOVE
+      </button>
+    `;
+
+    wishlistItems.appendChild(row);
+  });
+}
+
+/* =========================================
+   QUICK VIEW
+========================================= */
+
+let quickProductId = null;
+let selectedSize = "M";
+
+function openQuickView(id) {
+
+  const product = getProduct(id);
+
+  if (!product) return;
+
+  quickProductId = id;
+  selectedSize = "M";
+
+  $("quickImage").src = product.image;
+  $("quickImage").alt = product.name;
+  $("quickCategory").textContent = product.category;
+  $("quickTitle").textContent = product.name;
+  $("quickPrice").textContent = formatPrice(product.price);
+  $("quickDescription").textContent = product.description;
+
+  document.querySelectorAll(".size-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.textContent === "M");
+  });
+
+  openModal(quickViewModal);
+}
+
+/* =========================================
+   AUTH
+========================================= */
+
+let signupMode = false;
+
+function openAuth() {
+
+  if (user) {
+    updateProfile();
+    openProfile();
+    return;
+  }
+
+  signupMode = false;
+  updateAuthUI();
+
+  openModal(authModal);
+}
+
+function updateAuthUI() {
+
+  const signupFields = document.querySelectorAll(".signup-only");
+
+  signupFields.forEach(field => {
+    field.classList.toggle("hidden", !signupMode);
+  });
+
+  $("authEyebrow").textContent =
+    signupMode ? "JOIN VS THREADS" : "WELCOME BACK";
+
+  $("authTitle").textContent =
+    signupMode
+      ? "Create your account"
+      : "Sign in to your account";
+
+  $("authSubtitle").textContent =
+    signupMode
+      ? "Create an account to save your favourites and orders."
+      : "Access your profile, orders and saved items.";
+
+  $("authSubmit").textContent =
+    signupMode ? "CREATE ACCOUNT" : "SIGN IN";
+
+  $("authSwitchText").textContent =
+    signupMode
+      ? "Already have an account?"
+      : "Don't have an account?";
+
+  $("authSwitchBtn").textContent =
+    signupMode ? "Sign in" : "Create one";
+}
+
+function handleAuth() {
+
+  const email = $("authEmail").value.trim();
+  const password = $("authPassword").value.trim();
+
+  if (!email || !password) {
+    toast("Please complete the form");
+    return;
+  }
+
+  if (signupMode) {
+
+    const name = $("authName").value.trim();
+
+    if (!name) {
+      toast("Enter your name");
+      return;
+    }
+
+    user = {
+      name,
+      email
+    };
+
+    save(STORAGE.user, user);
+
+    closeModal(authModal);
+
+    toast("Account created");
+
+  } else {
+
+    user = {
+      name: email.split("@")[0],
+      email
+    };
+
+    save(STORAGE.user, user);
+
+    closeModal(authModal);
+
+    toast("Welcome back");
+  }
+
+  updateProfile();
+}
+
+/* =========================================
+   PROFILE
+========================================= */
+
+function openProfile() {
+
+  if (!user) {
+    openAuth();
+    return;
+  }
+
+  updateProfile();
+
+  profilePage.classList.add("open");
+  document.body.classList.add("locked");
+}
+
+function closeProfile() {
+
+  profilePage.classList.remove("open");
+  document.body.classList.remove("locked");
+}
+
+function updateProfile() {
+
+  if (!user) return;
+
+  $("profileName").textContent = user.name;
+  $("profileEmail").textContent = user.email;
+
+  const initials = user.name
+    .split(" ")
+    .map(word => word[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
+  $("profileAvatar").textContent = initials || "VS";
+
+  $("profileOrderCount").textContent = orders.length;
+  $("profileWishlistCount").textContent = wishlist.length;
+
+  $("profileCartCount").textContent =
+    cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  renderProfileOrders();
+}
+
+function renderProfileOrders() {
+
+  const list = $("profileOrdersList");
+  const empty = $("noOrders");
+
+  list.innerHTML = "";
+
+  if (!orders.length) {
+    empty.style.display = "block";
+    return;
+  }
+
+  empty.style.display = "none";
+
+  orders.slice().reverse().forEach(order => {
+
+    const card = document.createElement("div");
+
+    card.className = "order-card";
+
+    card.innerHTML = `
+      <div>
+        <strong>${order.id}</strong>
+        <small>${order.date}</small>
+      </div>
+
+      <div>
+        <strong>${formatPrice(order.total)}</strong>
+        <small>${order.items} item(s)</small>
+      </div>
+
+      <span class="order-status">${order.status}</span>
+    `;
+
+    list.appendChild(card);
+  });
+}
+
+/* =========================================
+   CHECKOUT
+========================================= */
+
+function openCheckout() {
+
+  if (!cart.length) {
+    toast("Your bag is empty");
+    return;
+  }
+
+  const summary = $("checkoutSummary");
+
+  summary.innerHTML = "";
+
+  cart.forEach(item => {
+
+    const product = getProduct(item.id);
+
+    if (!product) return;
+
+    const row = document.createElement("div");
+
+    row.className = "checkout-summary-row";
+
+    row.innerHTML = `
+      <span>${escapeHTML(product.name)} × ${item.quantity}</span>
+      <strong>${formatPrice(product.price * item.quantity)}</strong>
+    `;
+
+    summary.appendChild(row);
+  });
+
+  if (user) {
+    $("checkoutName").value = user.name;
+  }
+
+  openModal(checkoutModal);
+}
+
+function placeOrder() {
+
+  if (!cart.length) {
+    toast("Your bag is empty");
+    return;
+  }
+
+  const name = $("checkoutName").value.trim();
+  const phone = $("checkoutPhone").value.trim();
+  const address = $("checkoutAddress").value.trim();
+
+  if (!name || !phone || !address) {
+    toast("Complete delivery details");
+    return;
+  }
+
+  const total = cart.reduce((sum, item) => {
+
+    const product = getProduct(item.id);
+
+    return sum + (
+      product ? product.price * item.quantity : 0
+    );
+
+  }, 0);
+
+  const orderId =
+    "VST-" +
     Math.floor(100000 + Math.random() * 900000);
 
-
   const order = {
-
-    id: `VST-${orderNumber}`,
-
+    id: orderId,
     date: new Date().toLocaleDateString("en-IN", {
       day: "2-digit",
       month: "short",
       year: "numeric"
     }),
-
-    total: getCartSubtotal(),
-
-    status: "ORDER PLACED",
-
-    items: [...cart],
-
-    customer: {
-      name,
-      phone,
-      address
-    }
-
+    total,
+    items: cart.reduce(
+      (sum, item) => sum + item.quantity,
+      0
+    ),
+    status: "ORDER PLACED"
   };
-
 
   orders.push(order);
 
-  saveStorage(STORAGE_KEYS.orders, orders);
-
+  save(STORAGE.orders, orders);
 
   cart = [];
 
-  saveStorage(STORAGE_KEYS.cart, cart);
+  save(STORAGE.cart, cart);
 
+  closeModal(checkoutModal);
 
-  updateCartUI();
+  renderCart();
+  updateCounters();
+  updateProfile();
 
-  updateProfileUI();
-
-
-  document.getElementById("checkoutName").value = "";
-  document.getElementById("checkoutPhone").value = "";
-  document.getElementById("checkoutAddress").value = "";
-
-
-  closeCheckout();
-
-  closeDrawer(cartDrawer);
-
-
-  setTimeout(() => {
-
-    showToast(`Order ${order.id} placed successfully`);
-
-  }, 300);
-
-
-  setTimeout(() => {
-
-    openProfile();
-
-  }, 1000);
-
+  toast(`Order ${orderId} placed`);
 }
 
+/* =========================================
+   TRACKING
+========================================= */
 
-/* =========================================================
-   ORDER TRACKING
-========================================================= */
-
-const trackModal =
-  document.getElementById("trackModal");
-
-const trackInput =
-  document.getElementById("trackInput");
-
-const trackingResult =
-  document.getElementById("trackingResult");
-
-
-function openTrackModal() {
-
-  trackModal.classList.add("active");
-
-  document.body.classList.add("no-scroll");
-
+function openTracking() {
+  openModal(trackModal);
 }
-
-
-function closeTrackModal() {
-
-  trackModal.classList.remove("active");
-
-  document.body.classList.remove("no-scroll");
-
-  trackingResult.classList.add("hidden");
-
-  trackingResult.innerHTML = "";
-
-}
-
 
 function trackOrder() {
 
-  const id =
-    trackInput.value.trim().toUpperCase();
+  const value =
+    $("trackInput").value.trim().toUpperCase();
 
-
-  if (!id) {
-
-    showToast("Enter an order ID");
-
+  if (!value) {
+    toast("Enter an order ID");
     return;
-
   }
 
+  const result = $("trackingResult");
 
   const order = orders.find(
-    order => order.id === id
+    item => item.id === value
   );
 
+  result.classList.remove("hidden");
 
-  trackingResult.classList.remove("hidden");
+  if (order) {
 
-
-  if (!order) {
-
-    trackingResult.innerHTML = `
-
-      <h3>Order not found</h3>
-
+    result.innerHTML = `
+      <strong>${order.id}</strong>
       <p>
-        We couldn't find an order with ID
-        <strong>${id}</strong>.
+        Status: <b>${order.status}</b><br>
+        Order placed: ${order.date}<br>
+        Total: ${formatPrice(order.total)}
       </p>
-
     `;
 
-    return;
+  } else {
 
+    result.innerHTML = `
+      <strong>Order not found</strong>
+      <p>
+        We couldn't find that order ID in this demo store.
+        Check the ID and try again.
+      </p>
+    `;
   }
-
-
-  trackingResult.innerHTML = `
-
-    <h3>${order.status}</h3>
-
-    <p>
-      Order <strong>${order.id}</strong>
-      was placed on ${order.date}.
-    </p>
-
-    <p>
-      Total: <strong>${formatPrice(order.total)}</strong>
-    </p>
-
-  `;
-
 }
 
+/* =========================================
+   MODALS / DRAWERS
+========================================= */
 
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-
-function showToast(message) {
-
-  toastText.textContent = message;
-
-  toast.classList.add("show");
-
-
-  clearTimeout(toastTimer);
-
-
-  toastTimer = setTimeout(() => {
-
-    toast.classList.remove("show");
-
-  }, 2600);
-
+function openModal(modal) {
+  modal.classList.add("open");
+  document.body.classList.add("locked");
 }
 
+function closeModal(modal) {
+  modal.classList.remove("open");
 
-/* =========================================================
-   EVENT DELEGATION
-   THIS FIXES ADD TO CART RELIABILITY
-========================================================= */
+  if (
+    !cartDrawer.classList.contains("open") &&
+    !wishlistDrawer.classList.contains("open") &&
+    !profilePage.classList.contains("open")
+  ) {
+    document.body.classList.remove("locked");
+  }
+}
 
-productGrid.addEventListener("click", event => {
+function openDrawer(drawer) {
 
-  const card =
-    event.target.closest(".product-card");
+  closeDrawer(cartDrawer);
+  closeDrawer(wishlistDrawer);
 
-  if (!card) return;
+  drawer.classList.add("open");
+  overlay.classList.add("active");
+  document.body.classList.add("locked");
+}
 
+function closeDrawer(drawer) {
 
-  const productId =
-    card.dataset.productId;
+  drawer.classList.remove("open");
 
-
-  const action =
-    event.target.closest("[data-action]")?.dataset.action;
-
-
-  if (action === "add-cart") {
-
-    event.stopPropagation();
-
-    addToCart(productId);
-
-    return;
-
+  if (
+    !cartDrawer.classList.contains("open") &&
+    !wishlistDrawer.classList.contains("open")
+  ) {
+    overlay.classList.remove("active");
   }
 
-
-  if (action === "wishlist") {
-
-    event.stopPropagation();
-
-    toggleWishlist(productId);
-
-    return;
-
+  if (
+    !cartDrawer.classList.contains("open") &&
+    !wishlistDrawer.classList.contains("open") &&
+    !profilePage.classList.contains("open")
+  ) {
+    document.body.classList.remove("locked");
   }
+}
 
+function closeEverything() {
 
-  if (action === "quick-view") {
+  closeDrawer(cartDrawer);
+  closeDrawer(wishlistDrawer);
 
-    openQuickView(productId);
+  closeModal(authModal);
+  closeModal(quickViewModal);
+  closeModal(checkoutModal);
+  closeModal(trackModal);
 
-  }
+  closeProfile();
 
-});
+  overlay.classList.remove("active");
 
+  document.body.classList.remove("locked");
+}
 
-/* CART EVENTS */
+/* =========================================
+   EVENTS
+========================================= */
 
-cartItems.addEventListener("click", event => {
+function setupEvents() {
 
-  const button =
-    event.target.closest("[data-cart-action]");
+  $("mobileMenuBtn").addEventListener("click", () => {
+    $("mobileNav").classList.toggle("open");
+  });
 
-  if (!button) return;
+  document.querySelectorAll(".mobile-nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      $("mobileNav").classList.remove("open");
+    });
+  });
 
-
-  const action =
-    button.dataset.cartAction;
-
-  const id =
-    button.dataset.id;
-
-  const size =
-    button.dataset.size;
-
-
-  if (action === "increase") {
-
-    increaseCart(id, size);
-
-  }
-
-
-  if (action === "decrease") {
-
-    decreaseCart(id, size);
-
-  }
-
-
-  if (action === "remove") {
-
-    removeFromCart(id, size);
-
-  }
-
-});
-
-
-/* WISHLIST EVENTS */
-
-wishlistItems.addEventListener("click", event => {
-
-  const button =
-    event.target.closest("[data-wishlist-action]");
-
-  if (!button) return;
-
-
-  const productId =
-    button.dataset.id;
-
-
-  if (button.dataset.wishlistAction === "cart") {
-
-    addToCart(productId);
-
-  }
-
-});
-
-
-/* =========================================================
-   HEADER EVENTS
-========================================================= */
-
-document.getElementById("cartBtn")
-  .addEventListener("click", () => {
-
-    updateCartUI();
-
+  $("cartBtn").addEventListener("click", () => {
+    renderCart();
     openDrawer(cartDrawer);
-
   });
 
-
-document.getElementById("wishlistBtn")
-  .addEventListener("click", () => {
-
-    updateWishlistUI();
-
+  $("wishlistBtn").addEventListener("click", () => {
+    renderWishlist();
     openDrawer(wishlistDrawer);
-
   });
 
+  $("profileBtn").addEventListener("click", openProfile);
 
-document.getElementById("profileBtn")
-  .addEventListener("click", () => {
-
-    openProfile();
-
+  $("closeCart").addEventListener("click", () => {
+    closeDrawer(cartDrawer);
   });
 
+  $("closeWishlist").addEventListener("click", () => {
+    closeDrawer(wishlistDrawer);
+  });
 
-document.getElementById("searchBtn")
-  .addEventListener("click", () => {
+  overlay.addEventListener("click", closeEverything);
 
-    document
-      .getElementById("shop")
-      .scrollIntoView({
-        behavior: "smooth"
-      });
+  $("startShoppingBtn").addEventListener("click", () => {
+    closeDrawer(cartDrawer);
+    document.querySelector("#shop").scrollIntoView({
+      behavior: "smooth"
+    });
+  });
 
+  $("searchBtn").addEventListener("click", () => {
+
+    document.querySelector("#shop").scrollIntoView({
+      behavior: "smooth"
+    });
 
     setTimeout(() => {
-
-      document
-        .getElementById("productSearch")
-        .focus();
-
+      $("productSearch").focus();
     }, 500);
-
   });
 
-
-/* =========================================================
-   DRAWER CLOSE
-========================================================= */
-
-document.getElementById("closeCart")
-  .addEventListener("click", () => {
-
-    closeDrawer(cartDrawer);
-
+  $("productSearch").addEventListener("input", event => {
+    searchTerm = event.target.value;
+    renderProducts();
   });
 
-
-document.getElementById("closeWishlist")
-  .addEventListener("click", () => {
-
-    closeDrawer(wishlistDrawer);
-
-  });
-
-
-overlay.addEventListener("click", () => {
-
-  closeAllDrawers();
-
-});
-
-
-document.getElementById("startShoppingBtn")
-  .addEventListener("click", () => {
-
-    closeDrawer(cartDrawer);
-
-    document
-      .getElementById("shop")
-      .scrollIntoView({
-        behavior: "smooth"
-      });
-
-  });
-
-
-/* =========================================================
-   FILTERS
-========================================================= */
-
-document
-  .getElementById("filterButtons")
-  .addEventListener("click", event => {
+  $("filterButtons").addEventListener("click", event => {
 
     const button =
       event.target.closest(".filter-btn");
 
     if (!button) return;
 
-
-    document
-      .querySelectorAll(".filter-btn")
-      .forEach(btn =>
-        btn.classList.remove("active")
-      );
-
-
-    button.classList.add("active");
-
-
     activeCategory =
       button.dataset.category;
 
+    document.querySelectorAll(".filter-btn")
+      .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
 
     renderProducts();
-
   });
 
+  productGrid.addEventListener("click", event => {
 
-/* SEARCH */
+    const button =
+      event.target.closest("[data-action]");
 
-document
-  .getElementById("productSearch")
-  .addEventListener("input", () => {
+    if (!button) return;
 
-    renderProducts();
+    const id =
+      Number(button.dataset.id);
 
-  });
+    const action =
+      button.dataset.action;
 
-
-/* =========================================================
-   AUTH EVENTS
-========================================================= */
-
-document.getElementById("closeAuth")
-  .addEventListener("click", closeAuth);
-
-
-authSwitchBtn.addEventListener("click", () => {
-
-  authMode =
-    authMode === "login"
-      ? "signup"
-      : "login";
-
-  updateAuthMode();
-
-});
-
-
-authSubmit.addEventListener("click", handleAuth);
-
-
-/* ENTER KEY LOGIN */
-
-[authName, authEmail, authPassword].forEach(input => {
-
-  input.addEventListener("keydown", event => {
-
-    if (event.key === "Enter") {
-
-      handleAuth();
-
+    if (action === "add") {
+      addToCart(id);
     }
 
+    if (action === "wishlist") {
+      toggleWishlist(id);
+    }
+
+    if (action === "quickview") {
+      openQuickView(id);
+    }
   });
 
-});
+  cartItems.addEventListener("click", event => {
 
+    const button =
+      event.target.closest("[data-cart-action]");
 
-/* =========================================================
-   PROFILE EVENTS
-========================================================= */
+    if (!button) return;
 
-document.getElementById("profileBackBtn")
-  .addEventListener("click", closeProfile);
+    const id = Number(button.dataset.id);
+    const size = button.dataset.size;
+    const action = button.dataset.cartAction;
 
+    if (action === "plus") {
+      changeQuantity(id, size, 1);
+    }
 
-document.getElementById("logoutBtn")
-  .addEventListener("click", logout);
+    if (action === "minus") {
+      changeQuantity(id, size, -1);
+    }
 
-
-document.getElementById("profileShopBtn")
-  .addEventListener("click", () => {
-
-    closeProfile();
-
-    setTimeout(() => {
-
-      document
-        .getElementById("shop")
-        .scrollIntoView({
-          behavior: "smooth"
-        });
-
-    }, 200);
-
+    if (action === "remove") {
+      removeFromCart(id, size);
+    }
   });
 
+  wishlistItems.addEventListener("click", event => {
 
-document.getElementById("profileWishlistBtn")
-  .addEventListener("click", () => {
+    const button =
+      event.target.closest("[data-wish-action]");
 
-    closeProfile();
+    if (!button) return;
 
-    setTimeout(() => {
+    const id = Number(button.dataset.id);
 
-      updateWishlistUI();
+    if (button.dataset.wishAction === "remove") {
+      toggleWishlist(id);
+    }
 
-      openDrawer(wishlistDrawer);
-
-    }, 200);
-
+    if (button.dataset.wishAction === "add") {
+      addToCart(id);
+    }
   });
 
+  $("closeAuth").addEventListener(
+    "click",
+    () => closeModal(authModal)
+  );
 
-document.getElementById("profileOrdersBtn")
-  .addEventListener("click", () => {
+  $("authSwitchBtn").addEventListener("click", () => {
 
-    document
-      .querySelector(".profile-orders")
-      .scrollIntoView({
-        behavior: "smooth"
-      });
+    signupMode = !signupMode;
 
+    updateAuthUI();
   });
 
+  $("authSubmit").addEventListener(
+    "click",
+    handleAuth
+  );
 
-document.getElementById("profileTrackBtn")
-  .addEventListener("click", () => {
+  $("closeQuickView").addEventListener(
+    "click",
+    () => closeModal(quickViewModal)
+  );
 
-    openTrackModal();
+  $("sizeOptions").addEventListener("click", event => {
 
+    const button =
+      event.target.closest(".size-btn");
+
+    if (!button) return;
+
+    selectedSize = button.textContent;
+
+    document.querySelectorAll(".size-btn")
+      .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
   });
 
+  $("quickAddBtn").addEventListener("click", () => {
 
-/* =========================================================
-   QUICK VIEW EVENTS
-========================================================= */
-
-document.getElementById("closeQuickView")
-  .addEventListener("click", closeQuickView);
-
-
-sizeOptions.addEventListener("click", event => {
-
-  const button =
-    event.target.closest(".size-btn");
-
-  if (!button) return;
-
-
-  sizeOptions
-    .querySelectorAll(".size-btn")
-    .forEach(btn =>
-      btn.classList.remove("active")
-    );
-
-
-  button.classList.add("active");
-
-});
-
-
-quickAddBtn.addEventListener("click", () => {
-
-  const selectedSize =
-    sizeOptions
-      .querySelector(".size-btn.active")
-      ?.textContent || "M";
-
-
-  if (quickViewProductId) {
+    if (!quickProductId) return;
 
     addToCart(
-      quickViewProductId,
+      quickProductId,
       selectedSize
     );
 
-    closeQuickView();
+    closeModal(quickViewModal);
+  });
 
-  }
+  $("checkoutBtn").addEventListener(
+    "click",
+    openCheckout
+  );
 
-});
+  $("closeCheckout").addEventListener(
+    "click",
+    () => closeModal(checkoutModal)
+  );
 
+  $("confirmCheckout").addEventListener(
+    "click",
+    placeOrder
+  );
 
-/* =========================================================
-   CHECKOUT EVENTS
-========================================================= */
+  $("closeTrack").addEventListener(
+    "click",
+    () => closeModal(trackModal)
+  );
 
-document.getElementById("checkoutBtn")
-  .addEventListener("click", openCheckout);
+  $("trackSubmit").addEventListener(
+    "click",
+    trackOrder
+  );
 
+  $("trackOrderFooter").addEventListener(
+    "click",
+    openTracking
+  );
 
-document.getElementById("closeCheckout")
-  .addEventListener("click", closeCheckout);
+  $("profileTrackBtn").addEventListener(
+    "click",
+    openTracking
+  );
 
+  $("supportBtn").addEventListener(
+    "click",
+    openSupport
+  );
 
-document.getElementById("confirmCheckout")
-  .addEventListener("click", createOrder);
+  $("supportFab").addEventListener(
+    "click",
+    openSupport
+  );
 
+  $("footerAccountBtn").addEventListener(
+    "click",
+    openProfile
+  );
 
-/* =========================================================
-   TRACKING EVENTS
-========================================================= */
+  $("profileBackBtn").addEventListener(
+    "click",
+    closeProfile
+  );
 
-document.getElementById("closeTrack")
-  .addEventListener("click", closeTrackModal);
+  $("profileWishlistBtn").addEventListener(
+    "click",
+    () => {
+      closeProfile();
+      openDrawer(wishlistDrawer);
+    }
+  );
 
+  $("profileOrdersBtn").addEventListener(
+    "click",
+    () => {
+      document.querySelector(".profile-orders")
+        .scrollIntoView({ behavior: "smooth" });
+    }
+  );
 
-document.getElementById("trackSubmit")
-  .addEventListener("click", trackOrder);
+  $("profileShopBtn").addEventListener(
+    "click",
+    () => {
+      closeProfile();
 
+      document.querySelector("#shop")
+        .scrollIntoView({ behavior: "smooth" });
+    }
+  );
 
-trackInput.addEventListener("keydown", event => {
+  $("logoutBtn").addEventListener(
+    "click",
+    logout
+  );
 
-  if (event.key === "Enter") {
+  document.addEventListener("keydown", event => {
 
-    trackOrder();
+    if (event.key === "Escape") {
+      closeEverything();
+    }
+  });
+}
 
-  }
-
-});
-
-
-document.getElementById("trackOrderFooter")
-  .addEventListener("click", openTrackModal);
-
-
-/* =========================================================
-   FOOTER ACCOUNT
-========================================================= */
-
-document.getElementById("footerAccountBtn")
-  .addEventListener("click", openProfile);
-
-
-/* =========================================================
+/* =========================================
    SUPPORT
-========================================================= */
+========================================= */
 
 function openSupport() {
 
   /*
-    Add your real WhatsApp number here later.
+    Add your official WhatsApp business number here
+    when you are ready to connect WhatsApp.
+
     Example:
-    const whatsappNumber = "91XXXXXXXXXX";
+    const number = "91XXXXXXXXXX";
   */
 
-  showToast("WhatsApp support will be connected next");
-
+  toast("WhatsApp support will be connected here");
 }
 
+/* =========================================
+   LOGOUT
+========================================= */
 
-document.getElementById("supportBtn")
-  .addEventListener("click", openSupport);
+function logout() {
 
+  user = null;
 
-document.getElementById("supportFab")
-  .addEventListener("click", openSupport);
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const mobileMenuBtn =
-  document.getElementById("mobileMenuBtn");
-
-const mobileNav =
-  document.getElementById("mobileNav");
-
-
-mobileMenuBtn.addEventListener("click", () => {
-
-  mobileNav.classList.toggle("active");
-
-});
-
-
-mobileNav.addEventListener("click", event => {
-
-  if (event.target.tagName === "A") {
-
-    mobileNav.classList.remove("active");
-
-  }
-
-});
-
-
-/* MOBILE NAV CSS HELPER */
-
-const mobileNavStyle = document.createElement("style");
-
-mobileNavStyle.textContent = `
-
-  @media (max-width: 800px) {
-
-    .mobile-nav {
-      max-height: 0;
-      overflow: hidden;
-      background: white;
-      transition: max-height .3s ease;
-      border-top: 0 solid var(--line);
-    }
-
-    .mobile-nav.active {
-      max-height: 300px;
-      border-top: 1px solid var(--line);
-      padding: 10px 6% 18px;
-    }
-
-    .mobile-nav a {
-      display: block;
-      padding: 13px 0;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ink);
-    }
-
-  }
-
-`;
-
-document.head.appendChild(mobileNavStyle);
-
-
-/* =========================================================
-   PROFILE AUTO LOGIN
-========================================================= */
-
-if (currentUser) {
-
-  updateProfileUI();
-
-}
-
-
-/* =========================================================
-   INITIAL UI
-========================================================= */
-
-renderProducts();
-
-updateCartUI();
-
-updateWishlistUI();
-
-
-/* =========================================================
-   PAGE LOADER
-========================================================= */
-
-window.addEventListener("load", () => {
-
-  setTimeout(() => {
-
-    document
-      .getElementById("pageLoader")
-      .classList.add("hide");
-
-  }, 500);
-
-});
-
-
-/* =========================================================
-   ESCAPE KEY
-========================================================= */
-
-document.addEventListener("keydown", event => {
-
-  if (event.key !== "Escape") return;
-
-
-  closeAllDrawers();
-
-  closeAuth();
-
-  closeQuickView();
-
-  closeCheckout();
-
-  closeTrackModal();
+  localStorage.removeItem(STORAGE.user);
 
   closeProfile();
 
-});
+  toast("Logged out");
+}
 
+/* =========================================
+   HELPERS
+========================================= */
 
-/* =========================================================
-   LOGO
-========================================================= */
+function getProduct(id) {
+  return products.find(product => product.id === id);
+}
 
-document.getElementById("logoLink")
-  .addEventListener("click", event => {
+function formatPrice(value) {
 
-    event.preventDefault();
+  return new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 0
+  }).format(value);
+}
 
-    closeProfile();
+function updateCounters() {
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+  const totalCart =
+    cart.reduce(
+      (sum, item) => sum + item.quantity,
+      0
+    );
 
-  });
+  cartCount.textContent = totalCart;
+  wishlistCount.textContent = wishlist.length;
+}
 
+function escapeHTML(value) {
 
-console.log("VS THREADS loaded successfully.");
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+let toastTimer;
+
+function toast(message) {
+
+  $("toastText").textContent = message;
+
+  const toastElement = $("toast");
+
+  toastElement.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toastElement.classList.remove("show");
+  }, 2500);
+}
