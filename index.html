@@ -16,255 +16,297 @@
 
 <body>
 
-<div class="page-loader" id="pageLoader">
-  <div class="loader-logo">VS<span>.</span></div>
-</div>
+  <div class="loader" id="loader">
+    <div class="loader-mark">VS<span>.</span></div>
+    <div class="loader-line"><i></i></div>
+  </div>
 
-<header class="header" id="header">
-  <div class="header-inner">
+  <header class="header" id="header">
+    <div class="nav-wrap">
 
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-      <span></span>
-      <span></span>
-    </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+      </button>
 
-    <a href="#home" class="logo">VS<span>THREADS</span></a>
+      <a href="#home" class="brand">
+        VS<span>THREADS</span>
+      </a>
 
-    <nav class="desktop-nav">
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#new">New Arrivals</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <div class="nav-actions">
+
+        <button class="nav-icon" id="searchButton" aria-label="Search">
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="6.5"></circle>
+            <path d="M16 16L21 21"></path>
+          </svg>
+        </button>
+
+        <button class="nav-icon" id="wishlistButton" aria-label="Wishlist">
+          <svg viewBox="0 0 24 24">
+            <path d="M20.8 8.7c0 5.4-8.8 10.1-8.8 10.1S3.2 14.1 3.2 8.7A4.7 4.7 0 0 1 12 6.2a4.7 4.7 0 0 1 8.8 2.5Z"></path>
+          </svg>
+          <b id="wishlistCount">0</b>
+        </button>
+
+        <button class="nav-icon" id="accountButton" aria-label="Account">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="3.5"></circle>
+            <path d="M5 20c.8-4 3.2-6 7-6s6.2 2 7 6"></path>
+          </svg>
+        </button>
+
+        <button class="nav-icon cart-nav" id="cartButton" aria-label="Cart">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 4h2l2.1 11.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20.5 8H6"></path>
+            <circle cx="10" cy="20" r="1"></circle>
+            <circle cx="17" cy="20" r="1"></circle>
+          </svg>
+          <b id="cartCount">0</b>
+        </button>
+
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
       <a href="#home">Home</a>
       <a href="#shop">Shop</a>
       <a href="#new">New Arrivals</a>
       <a href="#about">About</a>
     </nav>
+  </header>
 
-    <div class="header-actions">
+  <main>
 
-      <button class="icon-btn" id="searchBtn" aria-label="Search">
-        <svg viewBox="0 0 24 24">
-          <circle cx="11" cy="11" r="6.5"></circle>
-          <path d="M16 16L21 21"></path>
-        </svg>
-      </button>
+    <section class="hero" id="home">
 
-      <button class="icon-btn" id="wishlistBtn" aria-label="Wishlist">
-        <svg viewBox="0 0 24 24">
-          <path d="M20.8 8.7c0 5.4-8.8 10.1-8.8 10.1S3.2 14.1 3.2 8.7A4.7 4.7 0 0 1 12 6.2a4.7 4.7 0 0 1 8.8 2.5Z"></path>
-        </svg>
-        <span class="count-badge" id="wishlistCount">0</span>
-      </button>
+      <div class="hero-copy reveal">
 
-      <button class="icon-btn" id="profileBtn" aria-label="Account">
-        <svg viewBox="0 0 24 24">
-          <circle cx="12" cy="8" r="3.5"></circle>
-          <path d="M5 20c.8-4 3.2-6 7-6s6.2 2 7 6"></path>
-        </svg>
-      </button>
+        <div class="hero-tag">
+          <span></span>
+          SS26 / NEW COLLECTION
+        </div>
 
-      <button class="icon-btn" id="cartBtn" aria-label="Cart">
-        <svg viewBox="0 0 24 24">
-          <path d="M3 4h2l2.1 11.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20.5 8H6"></path>
-          <circle cx="10" cy="20" r="1"></circle>
-          <circle cx="17" cy="20" r="1"></circle>
-        </svg>
-        <span class="count-badge" id="cartCount">0</span>
-      </button>
+        <h1>
+          WEAR YOUR
+          <em>STANDARD.</em>
+        </h1>
 
-    </div>
-  </div>
+        <p>
+          Contemporary essentials designed for people who don't
+          follow the usual.
+        </p>
 
-  <div class="mobile-nav" id="mobileNav">
-    <a href="#home">Home</a>
-    <a href="#shop">Shop</a>
-    <a href="#new">New Arrivals</a>
-    <a href="#about">About</a>
-  </div>
-</header>
+        <div class="hero-actions">
+          <a href="#shop" class="btn btn-dark">
+            SHOP COLLECTION
+            <span>↗</span>
+          </a>
 
-<main>
+          <a href="#new" class="btn btn-light">
+            NEW ARRIVALS
+          </a>
+        </div>
 
-<section class="hero" id="home">
-  <div class="hero-content">
-    <p class="eyebrow">SS26 / NEW COLLECTION</p>
+        <div class="hero-stats">
+          <div>
+            <strong>SS26</strong>
+            <span>COLLECTION</span>
+          </div>
+          <div>
+            <strong>08</strong>
+            <span>CORE PIECES</span>
+          </div>
+          <div>
+            <strong>01</strong>
+            <span>STANDARD</span>
+          </div>
+        </div>
 
-    <h1>WEAR YOUR <span>STANDARD.</span></h1>
+      </div>
 
-    <p class="hero-description">
-      Contemporary essentials designed for people who don't follow the usual.
-    </p>
+      <div class="hero-media reveal">
 
-    <div class="hero-buttons">
-      <a href="#shop" class="primary-btn">SHOP COLLECTION <span>↗</span></a>
-      <a href="#new" class="secondary-btn">VIEW NEW ARRIVALS</a>
-    </div>
+        <div class="hero-orb"></div>
 
-    <div class="hero-meta">
-      <div><strong>2026</strong><span>COLLECTION</span></div>
-      <div><strong>07</strong><span>CORE PIECES</span></div>
-      <div><strong>01</strong><span>STANDARD</span></div>
-    </div>
-  </div>
+        <div class="hero-photo">
+          <img
+            src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=90"
+            alt="VS Threads fashion"
+          >
+        </div>
 
-  <div class="hero-visual">
-    <div class="hero-glow"></div>
+        <div class="floating-card">
+          <small>DROP 01</small>
+          <strong>ESSENTIAL<br>FORM</strong>
+          <span>2026</span>
+        </div>
 
-    <div class="hero-image-card">
-      <img
-        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85"
-        alt="VS Threads fashion collection"
-      >
-    </div>
+      </div>
 
-    <div class="hero-floating-card">
-      <span>01</span>
-      <strong>ESSENTIAL<br>FORM</strong>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="marquee">
-  <div class="marquee-track">
-    <span>VS THREADS</span><i>✦</i>
-    <span>MODERN ESSENTIALS</span><i>✦</i>
-    <span>BUILT DIFFERENT</span><i>✦</i>
-    <span>VS THREADS</span><i>✦</i>
-    <span>MODERN ESSENTIALS</span><i>✦</i>
-    <span>BUILT DIFFERENT</span><i>✦</i>
-  </div>
-</section>
+    <section class="ticker">
+      <div class="ticker-track">
+        <span>VS THREADS</span><i>✦</i>
+        <span>MODERN ESSENTIALS</span><i>✦</i>
+        <span>BUILT DIFFERENT</span><i>✦</i>
+        <span>VS THREADS</span><i>✦</i>
+        <span>MODERN ESSENTIALS</span><i>✦</i>
+        <span>BUILT DIFFERENT</span><i>✦</i>
+      </div>
+    </section>
 
-<section class="benefits">
-  <div class="benefit">
-    <div class="benefit-icon">01</div>
-    <div>
-      <h3>PREMIUM FABRICS</h3>
-      <p>Made for everyday comfort.</p>
-    </div>
-  </div>
+    <section class="benefits">
 
-  <div class="benefit">
-    <div class="benefit-icon">02</div>
-    <div>
-      <h3>MODERN FIT</h3>
-      <p>Designed around movement.</p>
-    </div>
-  </div>
+      <div class="benefit-card reveal">
+        <span>01</span>
+        <div>
+          <strong>PREMIUM FABRICS</strong>
+          <p>Made for everyday comfort.</p>
+        </div>
+      </div>
 
-  <div class="benefit">
-    <div class="benefit-icon">03</div>
-    <div>
-      <h3>FAST DELIVERY</h3>
-      <p>Quick shipping across India.</p>
-    </div>
-  </div>
-</section>
+      <div class="benefit-card reveal">
+        <span>02</span>
+        <div>
+          <strong>MODERN FIT</strong>
+          <p>Designed around movement.</p>
+        </div>
+      </div>
 
-<section class="shop-section" id="shop">
+      <div class="benefit-card reveal">
+        <span>03</span>
+        <div>
+          <strong>FAST DELIVERY</strong>
+          <p>Quick shipping across India.</p>
+        </div>
+      </div>
 
-  <div class="section-heading">
-    <div>
-      <p class="eyebrow">THE COLLECTION</p>
-      <h2>SHOP <span>VS.</span></h2>
-    </div>
+    </section>
 
-    <p class="section-copy">
-      Curated pieces made to become part of your everyday rotation.
-    </p>
-  </div>
+    <section class="shop" id="shop">
 
-  <div class="shop-controls">
+      <div class="section-head reveal">
+        <div>
+          <small>THE COLLECTION</small>
+          <h2>SHOP <span>VS.</span></h2>
+        </div>
 
-    <div class="search-box">
-      <svg viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="6.5"></circle>
-        <path d="M16 16L21 21"></path>
-      </svg>
-      <input id="productSearch" type="search" placeholder="Search products...">
-    </div>
+        <p>
+          Curated pieces made to become part of your
+          everyday rotation.
+        </p>
+      </div>
 
-    <div class="filter-buttons" id="filterButtons">
-      <button class="filter-btn active" data-category="all">ALL</button>
-      <button class="filter-btn" data-category="tees">TEES</button>
-      <button class="filter-btn" data-category="hoodies">HOODIES</button>
-      <button class="filter-btn" data-category="shirts">SHIRTS</button>
-      <button class="filter-btn" data-category="bottoms">BOTTOMS</button>
-    </div>
+      <div class="shop-toolbar">
 
-  </div>
+        <div class="search">
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="6.5"></circle>
+            <path d="M16 16L21 21"></path>
+          </svg>
+          <input id="searchInput" type="search" placeholder="Search products...">
+        </div>
 
-  <div class="product-grid" id="productGrid"></div>
+        <div class="filters" id="filters">
+          <button class="filter active" data-category="all">ALL</button>
+          <button class="filter" data-category="tees">TEES</button>
+          <button class="filter" data-category="hoodies">HOODIES</button>
+          <button class="filter" data-category="shirts">SHIRTS</button>
+          <button class="filter" data-category="bottoms">BOTTOMS</button>
+        </div>
 
-  <div class="empty-state hidden" id="emptyState">
-    <div>×</div>
-    <h3>No products found</h3>
-    <p>Try another search or category.</p>
-  </div>
+      </div>
 
-</section>
+      <div class="products" id="products"></div>
 
-<section class="editorial" id="new">
+      <div class="no-products hidden" id="noProducts">
+        <div>×</div>
+        <h3>No products found</h3>
+        <p>Try another search or category.</p>
+      </div>
 
-  <div class="editorial-image">
-    <img
-      src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=85"
-      alt="VS Threads new collection"
-      loading="lazy"
-    >
-    <div class="editorial-label">DROP 01 / 2026</div>
-  </div>
+    </section>
 
-  <div class="editorial-content">
-    <p class="eyebrow">NEW ARRIVAL / 2026</p>
+    <section class="editorial reveal" id="new">
 
-    <h2>LESS NOISE.<br><span>MORE STYLE.</span></h2>
+      <div class="editorial-photo">
+        <img
+          src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1400&q=90"
+          alt="New collection"
+          loading="lazy"
+        >
+        <span>DROP 01 / 2026</span>
+      </div>
 
-    <p>
-      Clean silhouettes, premium materials and details designed to stand out
-      without trying too hard.
-    </p>
+      <div class="editorial-copy">
+        <small>NEW ARRIVAL / 2026</small>
 
-    <a href="#shop" class="primary-btn">
-      EXPLORE NEW DROP <span>↗</span>
-    </a>
-  </div>
+        <h2>
+          LESS NOISE.<br>
+          <span>MORE STYLE.</span>
+        </h2>
 
-</section>
+        <p>
+          Clean silhouettes, premium materials and details
+          designed to stand out without trying too hard.
+        </p>
 
-<section class="about-section" id="about">
+        <a href="#shop" class="btn btn-white">
+          EXPLORE NEW DROP
+          <span>↗</span>
+        </a>
+      </div>
 
-  <div>
-    <p class="eyebrow">ABOUT VS THREADS</p>
-    <h2>MADE FOR<br><span>YOUR ERA.</span></h2>
-  </div>
+    </section>
 
-  <div class="about-copy">
-    <p>
-      VS THREADS is a contemporary clothing label focused on premium everyday
-      pieces, modern silhouettes and effortless personal style.
-    </p>
-
-    <div class="about-line"></div>
-
-    <span>DESIGNED IN INDIA / 2026</span>
-  </div>
-
-</section>
-
-</main>
-
-<footer class="footer">
-
-  <div class="footer-top">
-
-    <div class="footer-brand">
-      <a href="#home" class="logo footer-logo">VS<span>THREADS</span></a>
-      <p>
-        Modern clothing for a generation that defines its own standard.
-      </p>
-    </div>
-
-    <div class="footer-links">
+    <section class="about reveal" id="about">
 
       <div>
+        <small>ABOUT VS THREADS</small>
+        <h2>
+          MADE FOR<br>
+          <span>YOUR ERA.</span>
+        </h2>
+      </div>
+
+      <div class="about-copy">
+        <p>
+          VS THREADS is a contemporary clothing label focused on
+          premium everyday pieces, modern silhouettes and
+          effortless personal style.
+        </p>
+
+        <div class="about-divider"></div>
+
+        <span>DESIGNED IN INDIA / 2026</span>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+        <a href="#home" class="brand">VS<span>THREADS</span></a>
+        <p>
+          Modern clothing for a generation that defines
+          its own standard.
+        </p>
+      </div>
+
+      <div class="footer-column">
         <h4>SHOP</h4>
         <a href="#shop">All Products</a>
         <a href="#shop">Tees</a>
@@ -272,298 +314,349 @@
         <a href="#shop">Shirts</a>
       </div>
 
-      <div>
+      <div class="footer-column">
         <h4>HELP</h4>
-        <button id="trackOrderFooter">Track Order</button>
-        <button id="supportBtn">WhatsApp Support</button>
-        <button id="footerAccountBtn">My Account</button>
+        <button id="footerTrack">Track Order</button>
+        <button id="footerSupport">WhatsApp Support</button>
+        <button id="footerAccount">My Account</button>
       </div>
 
     </div>
-  </div>
 
-  <div class="footer-bottom">
-    <span>© 2026 VS THREADS</span>
-    <span>BUILT FOR THE EVERYDAY.</span>
-  </div>
-
-</footer>
-
-<div class="overlay" id="overlay"></div>
-
-<aside class="side-drawer" id="cartDrawer">
-
-  <div class="drawer-header">
-    <div>
-      <p class="eyebrow">YOUR BAG</p>
-      <h2>Shopping Cart</h2>
-    </div>
-    <button class="close-btn" id="closeCart">×</button>
-  </div>
-
-  <div class="cart-items" id="cartItems"></div>
-
-  <div class="cart-empty" id="cartEmpty">
-    <div class="empty-bag-icon">＋</div>
-    <h3>Your bag is empty</h3>
-    <p>Add something you love.</p>
-    <button class="primary-btn" id="startShoppingBtn">START SHOPPING</button>
-  </div>
-
-  <div class="cart-footer" id="cartFooter">
-    <div class="subtotal-row">
-      <span>Subtotal</span>
-      <strong id="cartSubtotal">₹0</strong>
-    </div>
-    <p class="shipping-note">Shipping calculated at checkout.</p>
-    <button class="checkout-btn" id="checkoutBtn">
-      CHECKOUT <span>→</span>
-    </button>
-  </div>
-
-</aside>
-
-<aside class="side-drawer" id="wishlistDrawer">
-
-  <div class="drawer-header">
-    <div>
-      <p class="eyebrow">SAVED ITEMS</p>
-      <h2>Wishlist</h2>
-    </div>
-    <button class="close-btn" id="closeWishlist">×</button>
-  </div>
-
-  <div class="wishlist-items" id="wishlistItems"></div>
-
-  <div class="cart-empty" id="wishlistEmpty">
-    <div class="empty-bag-icon">♡</div>
-    <h3>Your wishlist is empty</h3>
-    <p>Save products you want to revisit.</p>
-  </div>
-
-</aside>
-
-<div class="modal-wrap" id="authModal">
-  <div class="auth-modal">
-
-    <button class="modal-close" id="closeAuth">×</button>
-
-    <div class="auth-brand">VS<span>THREADS</span></div>
-
-    <p class="eyebrow" id="authEyebrow">WELCOME BACK</p>
-    <h2 id="authTitle">Sign in to your account</h2>
-
-    <p class="auth-subtitle" id="authSubtitle">
-      Access your profile, orders and saved items.
-    </p>
-
-    <div class="form-group signup-only hidden">
-      <label>FULL NAME</label>
-      <input id="authName" type="text" placeholder="Your name">
+    <div class="footer-bottom">
+      <span>© 2026 VS THREADS</span>
+      <span>BUILT FOR THE EVERYDAY.</span>
     </div>
 
-    <div class="form-group">
-      <label>EMAIL</label>
-      <input id="authEmail" type="email" placeholder="you@example.com">
-    </div>
+  </footer>
 
-    <div class="form-group">
-      <label>PASSWORD</label>
-      <input id="authPassword" type="password" placeholder="••••••••">
-    </div>
+  <div class="overlay" id="overlay"></div>
 
-    <button class="auth-submit" id="authSubmit">SIGN IN</button>
+  <!-- CART -->
 
-    <p class="auth-switch">
-      <span id="authSwitchText">Don't have an account?</span>
-      <button id="authSwitchBtn">Create one</button>
-    </p>
+  <aside class="drawer" id="cartDrawer">
 
-    <p class="demo-note">Demo authentication for this frontend version.</p>
-
-  </div>
-</div>
-
-<section class="profile-page" id="profilePage">
-
-  <div class="profile-topbar">
-    <button class="back-btn" id="profileBackBtn">← BACK TO SHOP</button>
-    <strong>MY ACCOUNT</strong>
-    <span></span>
-  </div>
-
-  <div class="profile-container">
-
-    <div class="profile-header">
-      <div class="profile-avatar" id="profileAvatar">VS</div>
-
+    <div class="drawer-head">
       <div>
-        <p class="eyebrow">VS THREADS MEMBER</p>
-        <h1 id="profileName">Your Name</h1>
-        <p id="profileEmail">email@example.com</p>
+        <small>YOUR BAG</small>
+        <h2>Shopping Cart</h2>
       </div>
+      <button class="close" id="closeCart">×</button>
     </div>
 
-    <div class="profile-stats">
-      <div><strong id="profileOrderCount">0</strong><span>ORDERS</span></div>
-      <div><strong id="profileWishlistCount">0</strong><span>WISHLIST</span></div>
-      <div><strong id="profileCartCount">0</strong><span>BAG ITEMS</span></div>
+    <div class="drawer-content" id="cartContent"></div>
+
+    <div class="drawer-empty" id="cartEmpty">
+      <div class="empty-icon">+</div>
+      <h3>Your bag is empty</h3>
+      <p>Add something you love.</p>
+      <button class="btn btn-dark" id="shopFromCart">START SHOPPING</button>
     </div>
 
-    <div class="profile-grid">
+    <div class="drawer-footer" id="cartFooter">
 
-      <button class="profile-card" id="profileOrdersBtn">
-        <span>01</span>
-        <strong>MY ORDERS</strong>
-        <small>View previous purchases</small>
-        <b>↗</b>
-      </button>
+      <div class="total-line">
+        <span>Subtotal</span>
+        <strong id="subtotal">₹0</strong>
+      </div>
 
-      <button class="profile-card" id="profileWishlistBtn">
-        <span>02</span>
-        <strong>WISHLIST</strong>
-        <small>View saved products</small>
-        <b>↗</b>
-      </button>
+      <p>Shipping calculated at checkout.</p>
 
-      <button class="profile-card" id="profileTrackBtn">
-        <span>03</span>
-        <strong>TRACK ORDER</strong>
-        <small>Check order status</small>
-        <b>↗</b>
+      <button class="checkout-btn" id="checkoutButton">
+        CHECKOUT
+        <span>→</span>
       </button>
 
     </div>
 
-    <div class="profile-orders">
-      <p class="eyebrow">PURCHASE HISTORY</p>
-      <h2>Recent Orders</h2>
+  </aside>
 
-      <div id="profileOrdersList"></div>
+  <!-- WISHLIST -->
 
-      <div class="no-orders" id="noOrders">
-        <span>○</span>
-        <h3>No orders yet</h3>
-        <p>Your purchases will appear here.</p>
-        <button class="primary-btn" id="profileShopBtn">SHOP NOW</button>
+  <aside class="drawer" id="wishlistDrawer">
+
+    <div class="drawer-head">
+      <div>
+        <small>SAVED ITEMS</small>
+        <h2>Wishlist</h2>
       </div>
+      <button class="close" id="closeWishlist">×</button>
     </div>
 
-    <button class="logout-btn" id="logoutBtn">LOG OUT</button>
+    <div class="drawer-content" id="wishlistContent"></div>
+
+    <div class="drawer-empty" id="wishlistEmpty">
+      <div class="empty-icon">♡</div>
+      <h3>Your wishlist is empty</h3>
+      <p>Save products you want to revisit.</p>
+    </div>
+
+  </aside>
+
+  <!-- AUTH -->
+
+  <div class="modal" id="authModal">
+
+    <div class="auth-box">
+
+      <button class="close modal-close" id="closeAuth">×</button>
+
+      <div class="auth-logo">VS<span>THREADS</span></div>
+
+      <small id="authLabel">WELCOME BACK</small>
+
+      <h2 id="authTitle">Sign in to your account</h2>
+
+      <p id="authDescription">
+        Access your profile, orders and saved items.
+      </p>
+
+      <form id="authForm">
+
+        <div class="field signup-field hidden">
+          <label>FULL NAME</label>
+          <input id="authName" type="text" autocomplete="name" placeholder="Your name">
+        </div>
+
+        <div class="field">
+          <label>EMAIL</label>
+          <input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com">
+        </div>
+
+        <div class="field">
+          <label>PASSWORD</label>
+          <input id="authPassword" type="password" autocomplete="current-password" placeholder="••••••••">
+        </div>
+
+        <button class="auth-submit" type="submit" id="authSubmit">
+          SIGN IN
+        </button>
+
+      </form>
+
+      <div class="auth-switch">
+        <span id="authSwitchText">Don't have an account?</span>
+        <button id="authSwitch">Create one</button>
+      </div>
+
+      <small class="demo-text">
+        Frontend demo authentication.
+      </small>
+
+    </div>
 
   </div>
-</section>
 
-<div class="modal-wrap" id="quickViewModal">
+  <!-- QUICK VIEW -->
 
-  <div class="quick-view">
+  <div class="modal" id="quickModal">
 
-    <button class="modal-close" id="closeQuickView">×</button>
+    <div class="quick-box">
 
-    <div class="quick-image">
-      <img id="quickImage" src="" alt="">
-    </div>
+      <button class="close modal-close" id="closeQuick">×</button>
 
-    <div class="quick-content">
-
-      <p class="eyebrow" id="quickCategory">CATEGORY</p>
-      <h2 id="quickTitle">Product</h2>
-      <div class="quick-price" id="quickPrice">₹0</div>
-
-      <p id="quickDescription"></p>
-
-      <div class="size-title">SELECT SIZE</div>
-
-      <div class="size-options" id="sizeOptions">
-        <button class="size-btn">S</button>
-        <button class="size-btn active">M</button>
-        <button class="size-btn">L</button>
-        <button class="size-btn">XL</button>
+      <div class="quick-image">
+        <img id="quickImage" src="" alt="">
       </div>
 
-      <button class="quick-add-btn" id="quickAddBtn">
-        ADD TO CART <span>→</span>
-      </button>
+      <div class="quick-info">
 
-    </div>
-  </div>
-</div>
+        <small id="quickCategory">CATEGORY</small>
+        <h2 id="quickName">Product</h2>
+        <strong id="quickPrice">₹0</strong>
 
-<div class="modal-wrap" id="checkoutModal">
+        <p id="quickDescription"></p>
 
-  <div class="checkout-modal">
+        <label>SELECT SIZE</label>
 
-    <button class="modal-close" id="closeCheckout">×</button>
+        <div class="sizes" id="sizes">
+          <button data-size="S">S</button>
+          <button data-size="M" class="selected">M</button>
+          <button data-size="L">L</button>
+          <button data-size="XL">XL</button>
+        </div>
 
-    <p class="eyebrow">CHECKOUT</p>
-    <h2>Complete your order</h2>
+        <button class="quick-add" id="quickAdd">
+          ADD TO BAG
+          <span>→</span>
+        </button>
 
-    <div class="checkout-summary" id="checkoutSummary"></div>
-
-    <div class="checkout-form">
-
-      <div class="form-group">
-        <label>FULL NAME</label>
-        <input id="checkoutName" type="text" placeholder="Your name">
-      </div>
-
-      <div class="form-group">
-        <label>PHONE</label>
-        <input id="checkoutPhone" type="tel" placeholder="+91 XXXXX XXXXX">
-      </div>
-
-      <div class="form-group">
-        <label>DELIVERY ADDRESS</label>
-        <textarea id="checkoutAddress" placeholder="House, street, city, pincode"></textarea>
       </div>
 
     </div>
-
-    <div class="payment-box">
-      <span>PAYMENT</span>
-      <strong>RAZORPAY READY</strong>
-      <small>Connect Razorpay before production launch.</small>
-    </div>
-
-    <button class="checkout-confirm" id="confirmCheckout">
-      PLACE DEMO ORDER <span>→</span>
-    </button>
 
   </div>
-</div>
 
-<div class="modal-wrap" id="trackModal">
+  <!-- CHECKOUT -->
 
-  <div class="track-modal">
+  <div class="modal" id="checkoutModal">
 
-    <button class="modal-close" id="closeTrack">×</button>
+    <div class="checkout-box">
 
-    <p class="eyebrow">ORDER TRACKING</p>
-    <h2>Track your order</h2>
+      <button class="close modal-close" id="closeCheckout">×</button>
 
-    <p>Enter your VS THREADS order ID to view its current status.</p>
+      <small>CHECKOUT</small>
+      <h2>Complete your order</h2>
 
-    <div class="track-input">
-      <input id="trackInput" placeholder="Example: VST-123456">
-      <button id="trackSubmit">TRACK</button>
+      <div class="checkout-summary" id="checkoutSummary"></div>
+
+      <form id="checkoutForm">
+
+        <div class="field">
+          <label>FULL NAME</label>
+          <input id="checkoutName" type="text" placeholder="Your name">
+        </div>
+
+        <div class="field">
+          <label>PHONE</label>
+          <input id="checkoutPhone" type="tel" placeholder="+91 XXXXX XXXXX">
+        </div>
+
+        <div class="field">
+          <label>DELIVERY ADDRESS</label>
+          <textarea id="checkoutAddress" placeholder="House, street, city, pincode"></textarea>
+        </div>
+
+        <div class="payment-info">
+          <span>PAYMENT</span>
+          <strong>RAZORPAY READY</strong>
+          <small>Connect your payment gateway for production.</small>
+        </div>
+
+        <button class="place-order" type="submit">
+          PLACE DEMO ORDER
+          <span>→</span>
+        </button>
+
+      </form>
+
     </div>
 
-    <div class="tracking-result hidden" id="trackingResult"></div>
+  </div>
+
+  <!-- TRACK -->
+
+  <div class="modal" id="trackModal">
+
+    <div class="track-box">
+
+      <button class="close modal-close" id="closeTrack">×</button>
+
+      <small>ORDER TRACKING</small>
+      <h2>Track your order</h2>
+
+      <p>Enter your VS THREADS order ID.</p>
+
+      <form class="track-form" id="trackForm">
+        <input id="trackInput" placeholder="VST-123456">
+        <button type="submit">TRACK</button>
+      </form>
+
+      <div class="track-result hidden" id="trackResult"></div>
+
+    </div>
 
   </div>
-</div>
 
-<div class="toast" id="toast">
-  <span>✓</span>
-  <strong id="toastText">Added to cart</strong>
-</div>
+  <!-- PROFILE -->
 
-<button class="support-fab" id="supportFab">
-  <span>✦</span>
-  <strong>SUPPORT</strong>
-</button>
+  <section class="profile" id="profile">
 
-<script src="./script.js" defer></script>
+    <div class="profile-bar">
+      <button id="profileBack">← BACK TO SHOP</button>
+      <strong>MY ACCOUNT</strong>
+      <span></span>
+    </div>
+
+    <div class="profile-container">
+
+      <div class="profile-intro">
+        <div class="avatar" id="avatar">VS</div>
+
+        <div>
+          <small>VS THREADS MEMBER</small>
+          <h1 id="profileName">Your Name</h1>
+          <p id="profileEmail">email@example.com</p>
+        </div>
+      </div>
+
+      <div class="profile-stats">
+
+        <div>
+          <strong id="orderCount">0</strong>
+          <span>ORDERS</span>
+        </div>
+
+        <div>
+          <strong id="savedCount">0</strong>
+          <span>WISHLIST</span>
+        </div>
+
+        <div>
+          <strong id="bagCount">0</strong>
+          <span>BAG ITEMS</span>
+        </div>
+
+      </div>
+
+      <div class="profile-actions">
+
+        <button id="profileOrders">
+          <span>01</span>
+          <strong>MY ORDERS</strong>
+          <small>View previous purchases</small>
+          <b>↗</b>
+        </button>
+
+        <button id="profileWishlist">
+          <span>02</span>
+          <strong>WISHLIST</strong>
+          <small>View saved products</small>
+          <b>↗</b>
+        </button>
+
+        <button id="profileTracking">
+          <span>03</span>
+          <strong>TRACK ORDER</strong>
+          <small>Check order status</small>
+          <b>↗</b>
+        </button>
+
+      </div>
+
+      <div class="orders-section">
+
+        <small>PURCHASE HISTORY</small>
+        <h2>Recent Orders</h2>
+
+        <div id="ordersList"></div>
+
+        <div class="no-orders" id="noOrders">
+          <span>○</span>
+          <h3>No orders yet</h3>
+          <p>Your purchases will appear here.</p>
+          <button class="btn btn-dark" id="profileShop">SHOP NOW</button>
+        </div>
+
+      </div>
+
+      <button class="logout" id="logout">LOG OUT</button>
+
+    </div>
+
+  </section>
+
+  <div class="toast" id="toast">
+    <span>✓</span>
+    <strong id="toastText">Added to bag</strong>
+  </div>
+
+  <button class="support" id="support">
+    <span>✦</span>
+    SUPPORT
+  </button>
+
+  <script src="./script.js" defer></script>
 
 </body>
 </html>
