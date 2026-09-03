@@ -27,9 +27,9 @@
     </nav>
 
     <div class="nav-actions">
-      <button id="searchBtn">⌕</button>
-      <button>♡</button>
-      <button id="cartBtn">🛍</button>
+      <button id="searchBtn" aria-label="Search">⌕</button>
+      <button aria-label="Wishlist">♡</button>
+      <button id="cartBtn" aria-label="Cart">🛍</button>
     </div>
 
   </header>
@@ -79,7 +79,7 @@
     </section>
 
 
-    <!-- FEATURE BAR -->
+    <!-- FEATURES -->
     <section class="features">
 
       <div>FREE SHIPPING</div>
@@ -96,7 +96,9 @@
       <div class="section-heading">
 
         <div>
-          <p class="eyebrow">CURATED FOR YOU</p>
+          <p class="eyebrow">
+            CURATED FOR YOU
+          </p>
 
           <h2>
             Latest drops.
@@ -112,73 +114,178 @@
 
       <div class="product-grid">
 
+
+        <!-- PRODUCT 1 -->
         <article class="product-card">
 
-          <div class="product-image orange">
-            <span>VS</span>
+          <div class="product-image">
 
-            <button class="wishlist">
+            <img
+              src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85"
+              alt="VS Threads Essential Oversized Tee"
+            >
+
+            <button
+              class="wishlist"
+              aria-label="Add to wishlist"
+            >
               ♡
             </button>
+
+            <span class="product-tag">
+              NEW
+            </span>
+
           </div>
 
           <div class="product-info">
-            <h3>Essential Oversized Tee</h3>
-            <p>₹1,499</p>
+
+            <div>
+              <h3>
+                Essential Oversized Tee
+              </h3>
+
+              <p>
+                ₹1,499
+              </p>
+            </div>
+
+            <button class="quick-add">
+              +
+            </button>
+
           </div>
 
         </article>
 
 
+        <!-- PRODUCT 2 -->
         <article class="product-card">
 
-          <div class="product-image blue">
-            <span>VS</span>
+          <div class="product-image">
 
-            <button class="wishlist">
+            <img
+              src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85"
+              alt="VS Threads Everyday Shirt"
+            >
+
+            <button
+              class="wishlist"
+              aria-label="Add to wishlist"
+            >
               ♡
             </button>
+
+            <span class="product-tag">
+              NEW
+            </span>
+
           </div>
 
           <div class="product-info">
-            <h3>Everyday Cargo</h3>
-            <p>₹2,499</p>
+
+            <div>
+              <h3>
+                Everyday Shirt
+              </h3>
+
+              <p>
+                ₹1,999
+              </p>
+            </div>
+
+            <button class="quick-add">
+              +
+            </button>
+
           </div>
 
         </article>
 
 
+        <!-- PRODUCT 3 -->
         <article class="product-card">
 
-          <div class="product-image pink">
-            <span>VS</span>
+          <div class="product-image">
 
-            <button class="wishlist">
+            <img
+              src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85"
+              alt="VS Threads Signature Hoodie"
+            >
+
+            <button
+              class="wishlist"
+              aria-label="Add to wishlist"
+            >
               ♡
             </button>
+
+            <span class="product-tag">
+              BESTSELLER
+            </span>
+
           </div>
 
           <div class="product-info">
-            <h3>Signature Hoodie</h3>
-            <p>₹2,999</p>
+
+            <div>
+              <h3>
+                Signature Hoodie
+              </h3>
+
+              <p>
+                ₹2,999
+              </p>
+            </div>
+
+            <button class="quick-add">
+              +
+            </button>
+
           </div>
 
         </article>
 
 
+        <!-- PRODUCT 4 -->
         <article class="product-card">
 
-          <div class="product-image yellow">
-            <span>VS</span>
+          <div class="product-image">
 
-            <button class="wishlist">
+            <img
+              src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=900&q=85"
+              alt="VS Threads Relaxed Denim"
+            >
+
+            <button
+              class="wishlist"
+              aria-label="Add to wishlist"
+            >
               ♡
             </button>
+
+            <span class="product-tag">
+              TRENDING
+            </span>
+
           </div>
 
           <div class="product-info">
-            <h3>Relaxed Denim</h3>
-            <p>₹2,799</p>
+
+            <div>
+              <h3>
+                Relaxed Denim
+              </h3>
+
+              <p>
+                ₹2,799
+              </p>
+            </div>
+
+            <button class="quick-add">
+              +
+            </button>
+
           </div>
 
         </article>
@@ -212,6 +319,7 @@
     href="https://wa.me/919310151087"
     class="whatsapp"
     target="_blank"
+    rel="noopener noreferrer"
   >
     WhatsApp
   </a>
