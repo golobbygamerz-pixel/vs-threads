@@ -4,46 +4,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>VS THREADS — Wear Your Energy</title>
+  <meta name="description" content="VS THREADS — Premium contemporary fashion.">
+  <meta name="theme-color" content="#fffaf2">
+
+  <title>VS THREADS — Premium Fashion</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-logo">VS THREADS</div>
+  </div>
+
+
   <!-- NAVBAR -->
   <header class="navbar">
 
+    <button class="mobile-menu icon-btn" id="menuBtn" aria-label="Menu">
+      ☰
+    </button>
+
     <a href="#" class="logo">
-      VS<span>THREADS</span>
+      VS THREADS
+      <small>CONTEMPORARY WEAR</small>
     </a>
 
     <nav class="nav-links">
-      <a href="#new">New In</a>
-      <a href="#men">Men</a>
-      <a href="#women">Women</a>
-      <a href="#collections">Collections</a>
-      <a href="#sale">Sale</a>
+      <a href="#shop">SHOP</a>
+      <a href="#new">NEW IN</a>
+      <a href="#men">MEN</a>
+      <a href="#women">WOMEN</a>
+      <a href="#collections">COLLECTIONS</a>
     </nav>
 
     <div class="nav-actions">
-      <button id="searchBtn" aria-label="Search">⌕</button>
-      <button aria-label="Wishlist">♡</button>
-      <button id="cartBtn" aria-label="Cart">🛍</button>
+
+      <button class="icon-btn" id="searchBtn" aria-label="Search">
+        ⌕
+      </button>
+
+      <button class="icon-btn" id="wishlistBtn" aria-label="Wishlist">
+        ♡
+        <span class="badge" id="wishlistCount">0</span>
+      </button>
+
+      <button class="icon-btn" id="accountBtn" aria-label="Account">
+        ♙
+      </button>
+
+      <button class="icon-btn" id="cartBtn" aria-label="Cart">
+        🛍
+        <span class="badge" id="cartCount">0</span>
+      </button>
+
     </div>
 
   </header>
 
 
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+
+    <a href="#shop">SHOP</a>
+    <a href="#new">NEW IN</a>
+    <a href="#men">MEN</a>
+    <a href="#women">WOMEN</a>
+    <a href="#collections">COLLECTIONS</a>
+
+  </div>
+
+
   <!-- HERO -->
   <main>
 
-    <section class="hero">
+    <section class="hero" id="new">
 
       <div class="hero-content">
 
         <p class="eyebrow">
-          VS THREADS — NEW COLLECTION
+          VS THREADS — DROP 01 / 2026
         </p>
 
         <h1>
@@ -52,26 +98,37 @@
           <span>OWN ENERGY.</span>
         </h1>
 
-        <p class="hero-text">
-          Contemporary essentials designed for people
-          who don't follow the ordinary.
+        <p class="hero-description">
+          Contemporary essentials designed for bold everyday
+          expression. Clean silhouettes. Strong identity.
         </p>
 
-        <a href="#products" class="primary-btn">
-          SHOP COLLECTION →
-        </a>
+        <div class="hero-buttons">
+
+          <a href="#shop" class="primary-btn">
+            SHOP THE DROP →
+          </a>
+
+          <a href="#collections" class="secondary-btn">
+            EXPLORE
+          </a>
+
+        </div>
 
       </div>
 
 
       <div class="hero-visual">
 
+        <div class="hero-circle circle-one"></div>
+        <div class="hero-circle circle-two"></div>
+
         <div class="hero-brand">
           VS
         </div>
 
-        <div class="floating-text">
-          EST. 2026
+        <div class="hero-caption">
+          EST. 2026 / INDIA
         </div>
 
       </div>
@@ -79,78 +136,176 @@
     </section>
 
 
-    <!-- FEATURES -->
-    <section class="features">
+    <!-- MARQUEE -->
+    <section class="marquee">
 
-      <div>FREE SHIPPING</div>
-      <div>SECURE PAYMENT</div>
-      <div>EASY RETURNS</div>
-      <div>WHATSAPP SUPPORT</div>
+      <div class="marquee-track">
+
+        <span>NEW SEASON</span>
+        <b>•</b>
+
+        <span>VS THREADS</span>
+        <b>•</b>
+
+        <span>DESIGNED FOR EVERYDAY</span>
+        <b>•</b>
+
+        <span>FREE SHIPPING</span>
+        <b>•</b>
+
+        <span>NEW SEASON</span>
+        <b>•</b>
+
+        <span>VS THREADS</span>
+        <b>•</b>
+
+        <span>DESIGNED FOR EVERYDAY</span>
+        <b>•</b>
+
+      </div>
 
     </section>
 
 
-    <!-- PRODUCTS -->
-    <section class="products-section" id="products">
+    <!-- BENEFITS -->
+    <section class="benefits">
 
-      <div class="section-heading">
+      <div>
+        <strong>FREE SHIPPING</strong>
+        <span>On selected orders</span>
+      </div>
+
+      <div>
+        <strong>SECURE PAYMENT</strong>
+        <span>Safe checkout experience</span>
+      </div>
+
+      <div>
+        <strong>EASY RETURNS</strong>
+        <span>Simple return process</span>
+      </div>
+
+      <div>
+        <strong>WHATSAPP SUPPORT</strong>
+        <span>We're here to help</span>
+      </div>
+
+    </section>
+
+
+    <!-- SHOP -->
+    <section class="shop" id="shop">
+
+      <div class="section-header">
 
         <div>
+
           <p class="eyebrow">
-            CURATED FOR YOU
+            SHOP VS THREADS
           </p>
 
           <h2>
             Latest drops.
           </h2>
-        </div>
 
-        <a href="#">
-          VIEW ALL →
-        </a>
+          <p class="section-description">
+            Discover pieces made for your everyday rotation.
+          </p>
+
+        </div>
 
       </div>
 
 
-      <div class="product-grid">
+      <!-- SEARCH -->
+      <div class="search-container">
+
+        <span>⌕</span>
+
+        <input
+          type="search"
+          id="productSearch"
+          placeholder="Search products..."
+          autocomplete="off"
+        >
+
+      </div>
+
+
+      <!-- FILTERS -->
+      <div class="filters">
+
+        <button class="filter active" data-filter="all">
+          ALL
+        </button>
+
+        <button class="filter" data-filter="tshirt">
+          T-SHIRTS
+        </button>
+
+        <button class="filter" data-filter="hoodie">
+          HOODIES
+        </button>
+
+        <button class="filter" data-filter="shirt">
+          SHIRTS
+        </button>
+
+        <button class="filter" data-filter="denim">
+          DENIM
+        </button>
+
+      </div>
+
+
+      <!-- PRODUCTS -->
+      <div class="product-grid" id="productGrid">
 
 
         <!-- PRODUCT 1 -->
-        <article class="product-card">
+
+        <article
+          class="product"
+          data-category="tshirt"
+          data-name="Essential Oversized Tee"
+          data-price="1499"
+          data-id="1"
+        >
 
           <div class="product-image">
 
             <img
               src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85"
-              alt="VS Threads Essential Oversized Tee"
+              alt="Essential Oversized Tee"
+              loading="lazy"
             >
 
+            <span class="product-tag">
+              NEW
+            </span>
+
             <button
-              class="wishlist"
+              class="heart product-heart"
               aria-label="Add to wishlist"
             >
               ♡
             </button>
 
-            <span class="product-tag">
-              NEW
-            </span>
+            <button class="quick-add">
+              ADD TO CART
+            </button>
 
           </div>
 
           <div class="product-info">
 
             <div>
-              <h3>
-                Essential Oversized Tee
-              </h3>
-
-              <p>
-                ₹1,499
-              </p>
+              <h3>Essential Oversized Tee</h3>
+              <p>Heavyweight Cotton</p>
+              <strong>₹1,499</strong>
             </div>
 
-            <button class="quick-add">
+            <button class="mobile-add">
               +
             </button>
 
@@ -160,41 +315,49 @@
 
 
         <!-- PRODUCT 2 -->
-        <article class="product-card">
+
+        <article
+          class="product"
+          data-category="shirt"
+          data-name="Everyday Oversized Shirt"
+          data-price="1999"
+          data-id="2"
+        >
 
           <div class="product-image">
 
             <img
-              src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85"
-              alt="VS Threads Everyday Shirt"
+              src="https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=900&q=85"
+              alt="Everyday Oversized Shirt"
+              loading="lazy"
             >
 
+            <span class="product-tag">
+              NEW
+            </span>
+
             <button
-              class="wishlist"
+              class="heart product-heart"
               aria-label="Add to wishlist"
             >
               ♡
             </button>
 
-            <span class="product-tag">
-              NEW
-            </span>
+            <button class="quick-add">
+              ADD TO CART
+            </button>
 
           </div>
 
           <div class="product-info">
 
             <div>
-              <h3>
-                Everyday Shirt
-              </h3>
-
-              <p>
-                ₹1,999
-              </p>
+              <h3>Everyday Oversized Shirt</h3>
+              <p>Relaxed Fit</p>
+              <strong>₹1,999</strong>
             </div>
 
-            <button class="quick-add">
+            <button class="mobile-add">
               +
             </button>
 
@@ -204,41 +367,49 @@
 
 
         <!-- PRODUCT 3 -->
-        <article class="product-card">
+
+        <article
+          class="product"
+          data-category="hoodie"
+          data-name="Signature Hoodie"
+          data-price="2999"
+          data-id="3"
+        >
 
           <div class="product-image">
 
             <img
               src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85"
-              alt="VS Threads Signature Hoodie"
+              alt="Signature Hoodie"
+              loading="lazy"
             >
 
+            <span class="product-tag">
+              BESTSELLER
+            </span>
+
             <button
-              class="wishlist"
+              class="heart product-heart"
               aria-label="Add to wishlist"
             >
               ♡
             </button>
 
-            <span class="product-tag">
-              BESTSELLER
-            </span>
+            <button class="quick-add">
+              ADD TO CART
+            </button>
 
           </div>
 
           <div class="product-info">
 
             <div>
-              <h3>
-                Signature Hoodie
-              </h3>
-
-              <p>
-                ₹2,999
-              </p>
+              <h3>Signature Hoodie</h3>
+              <p>Premium Fleece</p>
+              <strong>₹2,999</strong>
             </div>
 
-            <button class="quick-add">
+            <button class="mobile-add">
               +
             </button>
 
@@ -248,41 +419,49 @@
 
 
         <!-- PRODUCT 4 -->
-        <article class="product-card">
+
+        <article
+          class="product"
+          data-category="denim"
+          data-name="Relaxed Denim"
+          data-price="2799"
+          data-id="4"
+        >
 
           <div class="product-image">
 
             <img
               src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=900&q=85"
-              alt="VS Threads Relaxed Denim"
+              alt="Relaxed Denim"
+              loading="lazy"
             >
 
+            <span class="product-tag">
+              TRENDING
+            </span>
+
             <button
-              class="wishlist"
+              class="heart product-heart"
               aria-label="Add to wishlist"
             >
               ♡
             </button>
 
-            <span class="product-tag">
-              TRENDING
-            </span>
+            <button class="quick-add">
+              ADD TO CART
+            </button>
 
           </div>
 
           <div class="product-info">
 
             <div>
-              <h3>
-                Relaxed Denim
-              </h3>
-
-              <p>
-                ₹2,799
-              </p>
+              <h3>Relaxed Denim</h3>
+              <p>Wide Leg Fit</p>
+              <strong>₹2,799</strong>
             </div>
 
-            <button class="quick-add">
+            <button class="mobile-add">
               +
             </button>
 
@@ -292,36 +471,531 @@
 
       </div>
 
-    </section>
 
-
-    <!-- BRAND STATEMENT -->
-    <section class="statement">
-
-      <p>
-        NOT JUST CLOTHES.
-      </p>
-
-      <h2>
-        IT'S YOUR
-        <br>
-        <span>ENERGY.</span>
-      </h2>
+      <div class="empty-state" id="emptyState">
+        No products found.
+      </div>
 
     </section>
 
+
+    <!-- EDITORIAL -->
+    <section class="editorial" id="collections">
+
+      <div class="editorial-content">
+
+        <p class="eyebrow">
+          THE VS ATTITUDE
+        </p>
+
+        <h2>
+          NOT JUST
+          <br>
+          <span>CLOTHES.</span>
+        </h2>
+
+        <p>
+          Designed around movement, confidence and individuality.
+          VS THREADS is made for those who create their own style.
+        </p>
+
+        <a href="#shop" class="primary-btn">
+          EXPLORE COLLECTION →
+        </a>
+
+      </div>
+
+      <div class="editorial-art">
+
+        <div>
+          VS
+        </div>
+
+        <span>
+          YOUR STYLE.
+          <br>
+          YOUR RULES.
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+    <section class="services">
+
+      <div class="section-header">
+
+        <p class="eyebrow">
+          SHOP WITH CONFIDENCE
+        </p>
+
+        <h2>
+          Everything you need.
+        </h2>
+
+      </div>
+
+
+      <div class="service-grid">
+
+        <article class="service-card">
+          <div class="service-icon">♙</div>
+          <h3>Your Account</h3>
+          <p>
+            Create an account, manage your profile and
+            access your order history.
+          </p>
+          <button onclick="openAuth()">
+            LOGIN / SIGNUP →
+          </button>
+        </article>
+
+
+        <article class="service-card">
+          <div class="service-icon">📦</div>
+          <h3>Track Your Order</h3>
+          <p>
+            Check your order status and follow your delivery
+            journey.
+          </p>
+          <button onclick="openTracking()">
+            TRACK ORDER →
+          </button>
+        </article>
+
+
+        <article class="service-card">
+          <div class="service-icon">💬</div>
+          <h3>Need Help?</h3>
+          <p>
+            Talk to the VS THREADS support team directly
+            through WhatsApp.
+          </p>
+          <a
+            href="https://wa.me/919310151087"
+            target="_blank"
+            rel="noopener"
+          >
+            CHAT ON WHATSAPP →
+          </a>
+        </article>
+
+      </div>
+
+    </section>
 
   </main>
 
 
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-grid">
+
+      <div>
+
+        <div class="footer-logo">
+          VS THREADS
+        </div>
+
+        <p class="footer-about">
+          Contemporary fashion for people who create
+          their own energy.
+        </p>
+
+      </div>
+
+
+      <div>
+        <h4>SHOP</h4>
+        <a href="#shop">New In</a>
+        <a href="#shop">T-Shirts</a>
+        <a href="#shop">Hoodies</a>
+        <a href="#shop">Denim</a>
+      </div>
+
+
+      <div>
+        <h4>HELP</h4>
+        <a href="#" onclick="openTracking(); return false;">
+          Track Order
+        </a>
+        <a href="#" onclick="openAuth(); return false;">
+          My Account
+        </a>
+        <a href="https://wa.me/919310151087">
+          Contact
+        </a>
+      </div>
+
+
+      <div>
+        <h4>FOLLOW</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Pinterest</a>
+        <a href="#">WhatsApp</a>
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 VS THREADS. ALL RIGHTS RESERVED.
+      </span>
+
+      <span>
+        INDIA
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- OVERLAY -->
+
+  <div class="overlay" id="overlay"></div>
+
+
+  <!-- CART DRAWER -->
+
+  <aside class="drawer" id="cartDrawer">
+
+    <div class="drawer-header">
+
+      <h2>
+        Your Cart
+      </h2>
+
+      <button class="close-btn" onclick="closeDrawers()">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="cart-items" id="cartItems">
+
+      <div class="cart-empty">
+        Your cart is empty.
+      </div>
+
+    </div>
+
+
+    <div class="cart-footer">
+
+      <div class="total-row">
+        <span>Subtotal</span>
+        <strong id="cartSubtotal">₹0</strong>
+      </div>
+
+      <p class="cart-note">
+        Shipping and taxes calculated at checkout.
+      </p>
+
+      <button class="checkout-btn" onclick="openCheckout()">
+        PROCEED TO CHECKOUT
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- WISHLIST DRAWER -->
+
+  <aside class="drawer" id="wishlistDrawer">
+
+    <div class="drawer-header">
+
+      <h2>
+        Wishlist
+      </h2>
+
+      <button class="close-btn" onclick="closeDrawers()">
+        ×
+      </button>
+
+    </div>
+
+    <div id="wishlistItems" class="wishlist-items">
+
+      <div class="cart-empty">
+        Your wishlist is empty.
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- AUTH MODAL -->
+
+  <div class="modal-wrap" id="authModal">
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+          <p class="eyebrow">
+            VS THREADS
+          </p>
+
+          <h2 id="authTitle">
+            Welcome back.
+          </h2>
+        </div>
+
+        <button class="close-btn" onclick="closeModals()">
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="authForm">
+
+        <div class="input-group">
+
+          <label>
+            EMAIL
+          </label>
+
+          <input
+            type="email"
+            placeholder="you@example.com"
+            required
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>
+            PASSWORD
+          </label>
+
+          <input
+            type="password"
+            placeholder="••••••••"
+            required
+          >
+
+        </div>
+
+
+        <button class="checkout-btn" type="submit">
+          CONTINUE
+        </button>
+
+      </form>
+
+
+      <p class="auth-switch">
+
+        <span id="authText">
+          New to VS THREADS?
+        </span>
+
+        <button id="authSwitch" type="button">
+          Create account
+        </button>
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- CHECKOUT MODAL -->
+
+  <div class="modal-wrap" id="checkoutModal">
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+          <p class="eyebrow">
+            SECURE CHECKOUT
+          </p>
+
+          <h2>
+            Complete order.
+          </h2>
+        </div>
+
+        <button class="close-btn" onclick="closeModals()">
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="checkoutForm">
+
+        <div class="input-group">
+
+          <label>FULL NAME</label>
+
+          <input
+            type="text"
+            placeholder="Your name"
+            required
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>PHONE</label>
+
+          <input
+            type="tel"
+            placeholder="+91"
+            required
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>ADDRESS</label>
+
+          <input
+            type="text"
+            placeholder="Delivery address"
+            required
+          >
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label>PAYMENT METHOD</label>
+
+          <select required>
+
+            <option value="">
+              Select payment
+            </option>
+
+            <option>
+              UPI
+            </option>
+
+            <option>
+              Card
+            </option>
+
+            <option>
+              Cash on Delivery
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <button class="checkout-btn" type="submit">
+          PLACE ORDER
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- TRACKING MODAL -->
+
+  <div class="modal-wrap" id="trackingModal">
+
+    <div class="modal">
+
+      <div class="modal-header">
+
+        <div>
+
+          <p class="eyebrow">
+            ORDER TRACKING
+          </p>
+
+          <h2>
+            Track your order.
+          </h2>
+
+        </div>
+
+        <button class="close-btn" onclick="closeModals()">
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="tracking">
+
+        <div class="tracking-search">
+
+          <input
+            id="trackingInput"
+            type="text"
+            placeholder="Enter order ID"
+          >
+
+          <button onclick="trackOrder()">
+            TRACK
+          </button>
+
+        </div>
+
+
+        <div id="trackingResult" class="tracking-result">
+
+          <p>
+            Enter your order ID to view tracking.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TOAST -->
+
+  <div class="toast" id="toast">
+    Added to cart
+  </div>
+
+
   <!-- WHATSAPP -->
+
   <a
-    href="https://wa.me/919310151087"
     class="whatsapp"
+    href="https://wa.me/919310151087"
     target="_blank"
-    rel="noopener noreferrer"
+    rel="noopener"
+    aria-label="WhatsApp support"
   >
-    WhatsApp
+    ◉
   </a>
 
 
